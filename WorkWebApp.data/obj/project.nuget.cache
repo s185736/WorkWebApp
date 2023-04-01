@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "4iNUQ1WHB4PxkvAfLfuqRwMKn7n+QvwgDRehKI2m7Vtt4rtVh+gLPiNpNR0PzIwImp3l8qaal2v6u4/G+jHn3g==",
+  "success": true,
+  "projectFilePath": "/Users/sammy/Documents/GitHub/WorkWebApp/WorkWebApp.data/WorkWebApp.data.csproj",
+  "expectedPackageFiles": [
+    "/Users/sammy/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.analyzers.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.relational.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.caching.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.caching.memory/8.0.0-preview.2.23128.3/microsoft.extensions.caching.memory.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.configuration.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.logging/8.0.0-preview.2.23128.3/microsoft.extensions.logging.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.logging.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.options/8.0.0-preview.2.23128.3/microsoft.extensions.options.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/microsoft.extensions.primitives/8.0.0-preview.2.23128.3/microsoft.extensions.primitives.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/npgsql/8.0.0-preview.2/npgsql.8.0.0-preview.2.nupkg.sha512",
+    "/Users/sammy/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.0-preview.2/npgsql.entityframeworkcore.postgresql.8.0.0-preview.2.nupkg.sha512"
+  ],
+  "logs": []
+}

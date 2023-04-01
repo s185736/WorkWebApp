@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using WorkWebApp;
+using WorkWebApp.data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// used for the DB 
+builder.Services.AddDbContext<EmployeeDataContext>(
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
+    );
 
 var app = builder.Build();
 
@@ -22,4 +31,5 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.Seed();
 app.Run();

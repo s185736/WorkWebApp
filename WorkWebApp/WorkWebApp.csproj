@@ -22,4 +22,12 @@
       <Content Remove="obj\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Npgsql" Version="8.0.0-preview.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WorkWebApp.data\WorkWebApp.data.csproj" />
+    </ItemGroup>
+
 </Project>
