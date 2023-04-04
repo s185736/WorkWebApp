@@ -5,4 +5,21 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Kontaktformular...</p>
+<p>Kontaktformular</p>
+<form method="post">
+    <div>
+        <label>Navn</label>
+        <br/>
+        <input type="text" name="name" value=""/>
+        <br/>
+        <label>Email</label>
+        <br/>
+        <input type="email" name="email" value=""/>
+        <br/>
+        <label>Kommentar</label>
+        <br/>
+        <input type="text" name="comment" value="skal ændres så tekst boksen til kommnetare er større eller bliver større så den kan holde mere tekst til at se"/>
+        <br/>
+        <input type="submit" name="submit" value="Submit"/>
+    </div>
+</form>
