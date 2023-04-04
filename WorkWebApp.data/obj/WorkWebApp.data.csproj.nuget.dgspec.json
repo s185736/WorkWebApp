@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sammy/Documents/GitHub/WorkWebApp/WorkWebApp.data/WorkWebApp.data.csproj": {}
+    "C:\\Users\\azmi_\\Documents\\Github\\62413_csharp\\WorkWebApp\\WorkWebApp.data\\WorkWebApp.data.csproj": {}
   },
   "projects": {
-    "/Users/sammy/Documents/GitHub/WorkWebApp/WorkWebApp.data/WorkWebApp.data.csproj": {
+    "C:\\Users\\azmi_\\Documents\\Github\\62413_csharp\\WorkWebApp\\WorkWebApp.data\\WorkWebApp.data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sammy/Documents/GitHub/WorkWebApp/WorkWebApp.data/WorkWebApp.data.csproj",
+        "projectUniqueName": "C:\\Users\\azmi_\\Documents\\Github\\62413_csharp\\WorkWebApp\\WorkWebApp.data\\WorkWebApp.data.csproj",
         "projectName": "WorkWebApp.data",
-        "projectPath": "/Users/sammy/Documents/GitHub/WorkWebApp/WorkWebApp.data/WorkWebApp.data.csproj",
-        "packagesPath": "/Users/sammy/.nuget/packages/",
-        "outputPath": "/Users/sammy/Documents/GitHub/WorkWebApp/WorkWebApp.data/obj/",
+        "projectPath": "C:\\Users\\azmi_\\Documents\\Github\\62413_csharp\\WorkWebApp\\WorkWebApp.data\\WorkWebApp.data.csproj",
+        "packagesPath": "C:\\Users\\azmi_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\azmi_\\Documents\\Github\\62413_csharp\\WorkWebApp\\WorkWebApp.data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/sammy/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\azmi_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,9 +40,25 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[8.0.0-preview.2, )"
+            },
+            "PackageManager": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
@@ -59,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

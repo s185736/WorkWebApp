@@ -2,6 +2,7 @@
 /WorkWebApp/bin/
 /WorkWebApp/idea/
 
+/WorkWebApp.data/csproj/
 /WorkWebApp.data/obj/
 /WorkWebApp.data/bin/
 /WorkWebApp.data/idea/
