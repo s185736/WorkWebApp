@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WorkWebApp.Pages;
 
@@ -14,5 +13,18 @@ public class ClockInModel : PageModel
 
     public void OnGet()
     {
+ 
+    }
+ 
+    public void OnPostClickInTime()
+    {
+        var clockInTime = DateTime.Now;
+        ViewData["Message"] = "Welcome back, you have now clocked in! Time Clocked in: "+clockInTime+".";
+    }
+ 
+    public void OnPostClickOutTime()
+    {
+        var clockInTime = DateTime.Now;
+        ViewData["Message"] = "Goodbye, you have now clocked out! Time Clocked Out: "+clockInTime+".";
     }
 }

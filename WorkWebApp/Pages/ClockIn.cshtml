@@ -6,3 +6,35 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Her på siden skal man kunne stemple sig ind på arbejdet så timen bliver talt..</p>
+
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
+</head>
+<body>
+<form method="post">
+    <table>
+        <tr>
+            <td><input type="submit" id="btnClickInTime" value="ClickInTime" asp-page-handler="ClickInTime"/></td>
+            <td><input type="submit" id="btnClickOutTime" class="e-success" value="ClickOutTime" asp-page-handler="ClickOutTime"/></td>
+        </tr>
+    </table>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert('@ViewData["Message"]');
+            };
+        </script>
+}
+</body>
+</html>
+
+<h2 style="color:crimson; background-color:darksalmon; padding:10px;">
+    
+</h2>
