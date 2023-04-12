@@ -16,13 +16,13 @@ public class ClockInModel : PageModel
  
     }
  
-    public void OnPostClickInTime()
+    public void OnPostClockInTime()
     {
         var clockInTime = DateTime.Now;
         ViewData["Message"] = "Welcome back, you have now clocked in! Time Clocked in: "+clockInTime+".";
     }
  
-    public void OnPostClickOutTime()
+    public void OnPostClockOutTime()
     {
         var clockInTime = DateTime.Now;
         ViewData["Message"] = "Goodbye, you have now clocked out! Time Clocked Out: "+clockInTime+".";
