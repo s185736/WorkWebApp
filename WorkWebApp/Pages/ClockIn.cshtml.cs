@@ -18,13 +18,19 @@ public class ClockInModel : PageModel
  
     public void OnPostClockInTime()
     {
-        var clockInTime = DateTime.Now;
-        ViewData["Message"] = "Welcome back, you have now clocked in! Time Clocked in: "+clockInTime+".";
+        var clockInDate = DateTime.Now.ToString("MM/dd/yyyy");
+        var clockInTime = DateTime.Now.ToString("HH:m:s");
+        ViewData["Message"] = "Welcome back, you have now clocked in! " +
+                              "Date: "+clockInDate+". " +
+                              "Time Clocked in at: "+clockInTime+".";
     }
  
     public void OnPostClockOutTime()
     {
-        var clockInTime = DateTime.Now;
-        ViewData["Message"] = "Goodbye, you have now clocked out! Time Clocked Out: "+clockInTime+".";
+        var clockInDate = DateTime.Now.ToString("MM/dd/yyyy");
+        var clockInTime = DateTime.Now.ToString("HH:m:s");
+        ViewData["Message"] = "Goodbye, you have now clocked out! " +
+                              "Date: "+clockInDate+". " +
+                              "Time Clocked out at: "+clockInTime+".";
     }
 }
