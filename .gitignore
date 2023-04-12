@@ -6,3 +6,11 @@
 /WorkWebApp.data/obj/
 /WorkWebApp.data/bin/
 /WorkWebApp.data/idea/
+*.xml
+*.iml
+*.cache
+*.cache
+WorkWebApp.data/obj/Debug/net7.0/WorkWebApp.data.csproj.AssemblyReference.cache
+*.json
+*.editorconfig
+*.csproj

@@ -1,0 +1,25 @@
+﻿@page
+@model Calendar
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Shifts</th>
+        </tr>
+    </thead>
+  <tbody>
+          @foreach (var employee in Model.Users)
+          {
+              <tr>
+                  <td>@employee.FullName</td>
+                  <td></td>
+              </tr>
+          }
+          @foreach (var shift in Model.Shifts)
+          {
+              <tr>
+                  <td>@shift.start_time - @shift.end_time</td>
+              </tr>
+          }
+      </tbody>
+  </table>

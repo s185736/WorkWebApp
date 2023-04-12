@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
-namespace WorkWebApp.data;
+using WorkWebApp.data;
 
 public class UserDataContext : DbContext
 {
@@ -16,5 +15,5 @@ public class UserDataContext : DbContext
     }
     
     public DbSet<User> users { get; set; }
-    
+    public DbSet<Shift> shifts { get; set; }
 }
