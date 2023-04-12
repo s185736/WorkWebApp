@@ -1,25 +1,51 @@
 ﻿@page
 @model Calendar
-<table>
+
+@{ 
+    var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    var currentDate = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+}
+
+<div class="row">
+    <div class="col-10 text-center">
+        <h2>@currentDate.ToString("MMMM yyyy")</h2>
+    </div>
+</div>
+
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>User</th>
-            <th>Shifts</th>
+            <th>Employee</th>
+            @foreach (var day in daysOfWeek)
+            {
+                <th>@day</th>
+            }
         </tr>
     </thead>
-  <tbody>
-          @foreach (var employee in Model.Users)
-          {
-              <tr>
-                  <td>@employee.FullName</td>
-                  <td></td>
-              </tr>
-          }
-          @foreach (var shift in Model.Shifts)
-          {
-              <tr>
-                  <td>@shift.start_time - @shift.end_time</td>
-              </tr>
-          }
-      </tbody>
-  </table>
+    <tbody>
+        @foreach (var employee in Model.Users)
+        {
+            <tr>
+                <td>@employee.FullName</td>
+                @foreach (var day in Enumerable.Range(0, 7).Select(i => currentDate.AddDays(i)))
+                {
+                    <td>
+                        @{
+                            var shifts = Model.Shifts.Where(s => s.employee_id == employee.Id && s.start_time.Date == day.Date).ToList();
+                            if (shifts.Any())
+                            {
+                                var shiftInfo = string.Join("<br>", shifts.Select(shift =>
+                                {
+                                    var startTime = DateTime.Parse(shift.start_time.ToString());
+                                    var endTime = DateTime.Parse(shift.end_time.ToString());
+                                    return $"{startTime.ToString("HH:mm:ss")} - {endTime.ToString("HH:mm:ss")}";
+                                }));
+                                @Html.Raw(shiftInfo)
+                            }
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

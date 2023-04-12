@@ -22,7 +22,7 @@ public class Calendar : PageModel
     public void OnGet()
     {
         Users = _context.users.ToList();
-        Shifts = _context.shifts.Where(s => s.employee_id == 18).ToList();
+        Shifts = _context.shifts.ToList();
     }
     
 
