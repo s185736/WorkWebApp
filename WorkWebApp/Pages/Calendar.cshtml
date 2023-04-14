@@ -3,7 +3,7 @@
 
 @{ 
     var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    var currentDate = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+    var currentDate = DateTime.Today;
 }
 
 <div class="row">
@@ -16,9 +16,9 @@
     <thead>
         <tr>
             <th>Employee</th>
-            @foreach (var day in daysOfWeek)
+            @for (int i = 0; i < 7; i++)
             {
-                <th>@day</th>
+                <th>@currentDate.AddDays(i).ToString("dd/MM")</th>
             }
         </tr>
     </thead>
