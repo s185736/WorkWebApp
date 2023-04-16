@@ -1,0 +1,33 @@
+@page
+@model CreateProfileModel
+@{
+    ViewData["Title"] = "Create Profile";
+}
+
+<h1>Create Profile</h1>
+
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
+</head>
+<body>
+<form method="post">
+    <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" class="form-control" id="fullName" name="FullName" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="Email" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="Password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Profile</button>
+</form>
+</body>
+</html>

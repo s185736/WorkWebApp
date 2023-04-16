@@ -8,9 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 // used for the DB 
-builder.Services.AddDbContext<EmployeeDataContext>(
+builder.Services.AddDbContext<UserDataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
     );
+
 
 var app = builder.Build();
 

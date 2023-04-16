@@ -8,9 +8,8 @@ public static class DataSeeder
     public static void Seed(this IHost host)
     {
         using var scope = host.Services.CreateScope();
-        using var context = scope.ServiceProvider.GetRequiredService<EmployeeDataContext>();
+        using var context = scope.ServiceProvider.GetRequiredService<UserDataContext>();
         context.Database.EnsureCreated();
-        AddEmployees(context);
     }
 
     public static void AddEmployees(EmployeeDataContext context)
