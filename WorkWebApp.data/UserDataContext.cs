@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WorkWebApp.data;
+
+namespace WorkWebApp.data;
 
 public class UserDataContext : DbContext
 {
