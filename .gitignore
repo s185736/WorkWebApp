@@ -14,3 +14,4 @@ WorkWebApp.data/obj/Debug/net7.0/WorkWebApp.data.csproj.AssemblyReference.cache
 *.json
 *.editorconfig
 *.csproj
+WorkWebApp/bin/Debug/net7.0/WorkWebApp.dll
