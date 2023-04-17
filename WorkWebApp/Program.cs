@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 // used for the DB 
 builder.Services.AddDbContext<UserDataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
-    );
+);
 
 
 var app = builder.Build();
@@ -32,5 +32,4 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.Seed();
 app.Run();

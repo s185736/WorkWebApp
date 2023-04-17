@@ -1,4 +1,5 @@
 ﻿@page
+@using WorkWebApp.data
 @model Calendar
 
 @{ 
@@ -14,38 +15,35 @@
 
 <table class="table table-bordered">
     <thead>
-        <tr>
-            <th>Employee</th>
-            @for (int i = 0; i < 7; i++)
-            {
-                <th>@currentDate.AddDays(i).ToString("dd/MM")</th>
-            }
-        </tr>
+    <tr>
+        <th>Employee</th>
+        @for (int i = 0; i < 7; i++)
+        {
+            <th>@currentDate.AddDays(i).ToString("dd-MM")</th>
+        }
+    </tr>
     </thead>
     <tbody>
-        @foreach (var employee in Model.Users)
-        {
-            <tr>
-                <td>@employee.FullName</td>
-                @foreach (var day in Enumerable.Range(0, 7).Select(i => currentDate.AddDays(i)))
-                {
-                    <td>
-                        @{
-                            var shifts = Model.Shifts.Where(s => s.employee_id == employee.Id && s.start_time.Date == day.Date).ToList();
-                            if (shifts.Any())
+    @foreach (var employee in Model.Users)
+    {
+        <tr>
+            <td>@employee.firstname</td>
+            @foreach (var day in Enumerable.Range(0, 7).Select(i => currentDate.AddDays(i)))
+            {
+                <td>
+                    @{
+                        var shifts = Model.Shifts.Where(s => s.userid == employee.record_id && s.dateofshift.Date == day.Date).ToList();
+                        if (shifts.Any())
+                        {
+                            foreach (var shift in shifts)
                             {
-                                var shiftInfo = string.Join("<br>", shifts.Select(shift =>
-                                {
-                                    var startTime = DateTime.Parse(shift.start_time.ToString());
-                                    var endTime = DateTime.Parse(shift.end_time.ToString());
-                                    return $"{startTime.ToString("HH:mm:ss")} - {endTime.ToString("HH:mm:ss")}";
-                                }));
-                                @Html.Raw(shiftInfo)
+                                <div>@shift.start_time.ToString("HH:mm:ss") - @shift.end_time.ToString("HH:mm:ss")</div>
                             }
                         }
-                    </td>
-                }
-            </tr>
-        }
+                    }
+                </td>
+            }
+        </tr>
+    }
     </tbody>
 </table>
