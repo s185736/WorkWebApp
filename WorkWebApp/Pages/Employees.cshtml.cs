@@ -10,10 +10,10 @@ public class EmployeesModel : PageModel
         _context = context;
     }
 
-    public IList<User> Users { get;set; }
+    public IList<_user> Users { get;set; }
 
     public void OnGet()
     {
-        Users = _context.users.ToList();
+        Users = _context._user.ToList();
     }
 }
