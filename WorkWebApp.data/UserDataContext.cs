@@ -12,12 +12,8 @@ public class UserDataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseSerialColumns();
-        modelBuilder.Entity<_shift>()
-            .HasKey(s => s.record_id);
-        modelBuilder.Entity<_user>()
-            .HasKey(s => s.record_id);
     }
     
-    public DbSet<_user> _user { get; set; }
-    public DbSet<_shift> _shift { get; set; }
+    public DbSet<User> users { get; set; }
+    public DbSet<Shift> shifts { get; set; }
 }

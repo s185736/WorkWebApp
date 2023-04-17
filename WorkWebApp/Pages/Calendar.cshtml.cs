@@ -16,13 +16,13 @@ public class Calendar : PageModel
         _context = context;
     }
     
-    public IList<_user> Users { get;set; }
-    public IList<_shift> Shifts { get;set; }
+    public IList<User> Users { get;set; }
+    public IList<Shift> Shifts { get;set; }
 
     public void OnGet()
     {
-        Users = _context._user.ToList();
-        Shifts = _context._shift.ToList();
+        Users = _context.users.ToList();
+        Shifts = _context.shifts.ToList();
     }
     
 

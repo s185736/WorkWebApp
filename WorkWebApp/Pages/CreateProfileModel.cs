@@ -12,7 +12,7 @@ namespace WorkWebApp.Pages
         private readonly UserDataContext _context;
         
         [BindProperty]
-        public string record_id { get; set; }
+        public string Id { get; set; }
 
         [BindProperty]
         public string FullName { get; set; }
@@ -32,23 +32,16 @@ namespace WorkWebApp.Pages
 
         public IActionResult OnPost()
         {
-            var fullnSplitame = FullName.Split(" ");
-            var firstname = fullnSplitame[0];
-            var lastname = fullnSplitame[1];
 
-            var user = new _user()
+            var user = new User()
             {
-                firstname = firstname,
-                lastname = lastname,
-                mail = Email,
-                phonenumber = "testerter",
-                birthday = default,
-                role = "testerter",
-                department = "testerter",
-                password = Password
+                Id = FullName.Length,
+                FullName = FullName,
+                Email = Email,
+                Password = Password
             };
 
-            _context._user.Add(user);
+            _context.users.Add(user);
             _context.SaveChanges();
             
             Console.WriteLine("Saved");
