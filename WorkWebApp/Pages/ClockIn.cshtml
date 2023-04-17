@@ -5,73 +5,24 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Your times will be recorded below. If you arrive earlier, it will also be sent to your manager, but be aware that as long as your manager has not given you permission to arrive earlier, your registration will be changed to your normal time.</p>
-
-<ol>
-    <li>You must be dressed when you clock in.</li>
-    <li>You must sign out as soon as the department is closed, and not after you have changed clothes and or other things.</li>
-    <li>If you have forgotten to clock in when you came to work, you must notify the department manager as soon as possible.</li>
-</ol>
+<p>Her på siden skal man kunne stemple sig ind på arbejdet så timen bliver talt..</p>
 
 <!DOCTYPE html>
-<html lang="en">
+ 
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <style>
-        #product-overview {
-            width: 1200px;
-            margin:  auto;
-            text-align: center;
-            background-color: lightgray;
-            border: dimgrey solid 5px;
-            padding: 20px;
-            }
-        #clock-in-button {
-           margin: auto;
-           font-size:  80px;
-           text-align: center;
-           background-color: #336033;
-           border: #243f24 solid 5px;
-           padding: 100px 125px;
-        }
-        #clock-out-button {
-             margin: auto;
-             font-size:  80px;
-             text-align: center;
-             background-color: #6b2c2c;
-             border: #652121 solid 5px;
-             padding: 100px 115px;
-        }
-        main {
-             margin:  auto;
-        }
-        body {
-             margin:  auto;
-        }
-        html {
-             height:  100%;
-        } 
-    </style>
-    <link rel="stylesheet" href="code.css">
-    <title>Clock In & Out</title>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
 </head>
 <body>
-<main>
-      <section id="product-overview">
-    <form method="post">
-        <table>
-            <tr>
-                <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-page-handler="ClockInTime"/></td>
-                <div> </div>
-                <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-page-handler="ClockOutTime"/></td>
-            </tr>
-        </table>
-    </form>
-    </section>
-        </main>
+<form method="post">
+    <table>
+        <tr>
+            <td><input type="submit" id="btnClockInTime" class="btn btn-success" value="Clock In" asp-page-handler="ClockInTime"/></td>
+            <td><input type="submit" id="btnClockOutTime" class="btn btn-danger" value="Clock Out" asp-page-handler="ClockOutTime"/></td>
+        </tr>
+    </table>
+</form>
 
 @if (ViewData["Message"] != null)
 {
