@@ -35,17 +35,24 @@ namespace WorkWebApp.Pages
             var fullnSplitame = FullName.Split(" ");
             var firstname = fullnSplitame[0];
             var lastname = fullnSplitame[1];
+            string pastelColor;
+            do
+            {
+                pastelColor = GeneratePastelColor();
+            } while (_context._user.Any(u => u.color == pastelColor));
+
 
             var user = new _user()
             {
                 firstname = firstname,
                 lastname = lastname,
                 mail = Email,
-                phonenumber = "testerter",
+                phonenumber = "Ingen værdi",
                 birthday = default,
-                role = "testerter",
-                department = "testerter",
-                password = Password
+                role = "Ingen værdi",
+                department = "Ingen værdi",
+                password = Password,
+                color = pastelColor
             };
 
             _context._user.Add(user);
@@ -54,7 +61,17 @@ namespace WorkWebApp.Pages
             Console.WriteLine("Saved");
 
 
-            return RedirectToPage("/Employees");
+            return RedirectToPage("/Login");
+        }
+        
+        private string GeneratePastelColor()
+        {
+            var random = new Random();
+            var red = random.Next(128, 256);
+            var green = random.Next(128, 256);
+            var blue = random.Next(128, 256);
+
+            return $"#{red:X2}{green:X2}{blue:X2}";
         }
     }
 }

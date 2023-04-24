@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddControllers();
+
+
 // used for the DB 
 builder.Services.AddDbContext<UserDataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
@@ -31,5 +34,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

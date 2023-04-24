@@ -18,6 +18,7 @@ public class _user
     public string role { get; set; }
     public string department { get; set; }
     public string password { get; set; }
+    public string color { get; set; }
     [NotMapped]
     public Dictionary<DateTime, _shift> ShiftsDictionary { get; set; }
     

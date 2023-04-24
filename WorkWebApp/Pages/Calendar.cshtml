@@ -2,48 +2,80 @@
 @using WorkWebApp.data
 @model Calendar
 
-@{ 
-    var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    var currentDate = DateTime.Today;
-}
-
-<div class="row">
-    <div class="col-10 text-center">
-        <h2>@currentDate.ToString("MMMM yyyy")</h2>
-    </div>
-</div>
-
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>Employee</th>
-        @for (int i = 0; i < 7; i++)
-        {
-            <th>@currentDate.AddDays(i).ToString("dd-MM")</th>
-        }
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var employee in Model.Users)
-    {
-        <tr>
-            <td>@employee.firstname</td>
-            @foreach (var day in Enumerable.Range(0, 7).Select(i => currentDate.AddDays(i)))
-            {
-                <td>
-                    @{
-                        var shifts = Model.Shifts.Where(s => s.userid == employee.record_id && s.dateofshift.Date == day.Date).ToList();
-                        if (shifts.Any())
-                        {
-                            foreach (var shift in shifts)
-                            {
-                                <div>@shift.start_time.ToString("HH:mm:ss") - @shift.end_time.ToString("HH:mm:ss")</div>
-                            }
-                        }
-                    }
-                </td>
-            }
-        </tr>
+    @{
+        List<DateTime> days = Enumerable.Range(0, 7).Select(i => Model.CurrentDate.AddDays(i)).ToList();
     }
-    </tbody>
+
+
+<script>
+    function PreviousSeven() {
+        location.href = "/Calendar?handler=PreviousSeven";
+    }
+    
+    function GoToToday() {
+        location.href = "/Calendar?handler=GoToToday";
+    }
+    
+    function NextSeven() {
+        location.href = "/Calendar?handler=NextSeven";
+    }
+
+</script>
+
+
+<table class="calendar" id="calendar">
+    <div class="header">
+        <button onclick="PreviousSeven()">Previous 7 Days</button>
+        <button onclick="GoToToday()">Today</button>
+        <button onclick="NextSeven()">Next 7 Days</button>
+
+        <div class="date" id="dateDisplay">@Model.CurrentDate.ToString("MMMM yyyy")</div>
+        <div class="days-of-week">
+            <tr class="employee-row" id="headerRow">
+                <th class="employeena">
+                    Employee
+                </th>
+                @foreach (var day in days)
+                {
+                    <th class="day-of-week day-header">@day.ToString("ddd, MMM d")</th>
+                }
+            </tr>
+        </div>
+    </div>
+    <div class="body">
+        @foreach (var employee in Model.Users)
+        {
+            <tr class="employee-row">
+                <td class="employee-name">@employee.firstname @employee.lastname</td>
+                <div class="employee-shifts">
+                    @foreach (var day in Enumerable.Range(0, 7).Select(i => Model.CurrentDate.AddDays(i)))
+                    {
+                        <td class="shift employee-shift">
+                            @{
+                                var shifts = Model.Shifts.Where(s => s.userid == employee.record_id && s.dateofshift.Date == day.Date).ToList();
+
+                                if (shifts.Any())
+                                {
+                                    foreach (var shift in shifts)
+                                    {
+                                        <div class="shift-time" style="background-color: @employee.color">
+                                            <span>@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</span>
+                                        </div>
+                                    }
+                                }
+                                if (!shifts.Any())
+                                {
+                                    <span id="noShiftText">no shift</span>
+                                }
+                            }
+                        </td>
+                    }
+                </div>
+            </tr>
+        }
+    </div>
+    <a asp-page="/Index">Home page</a>
 </table>
+
+
+

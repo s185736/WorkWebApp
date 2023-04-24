@@ -1,0 +1,107 @@
+﻿
+.calendar {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.header .date {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px 0;
+    color: black;
+}
+
+.days-of-week {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-size: 11px;
+}
+
+.day-of-week {
+    font-weight: bold;
+    text-align: center;
+    width: calc(100% / 8);
+    margin: auto;
+}
+
+.employee-row {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.employee-name {
+    font-weight: bold;
+    width: 20%;
+    padding: 8px;
+    border-right: 1px solid #ccc;
+    overflow: hidden;
+}
+.employeena {
+    font-weight: bold;
+    text-align: center;
+    width: calc(100% / 7);
+    margin: auto;
+}
+
+.employee-shifts {
+    display: flex;
+    width: 80%;
+}
+
+.shift {
+    width: calc(100% / 7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #ccc;
+}
+
+.shift:last-child {
+    border-right: none;
+}
+
+.shift-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+}
+
+.shift-time {
+    font-size: 14px;
+    margin-top: 8px;
+    padding: 4px 8px;
+    background-color: #ddd;
+    border-radius: 4px;
+    display: inline-block;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+button {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: rgba(56, 97, 66, 0.7);
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #45a049;
+}
+
+#noShiftText{
+    margin: auto;
+    color: rgba(0, 0, 0, 0.13);
+}
