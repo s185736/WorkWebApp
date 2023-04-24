@@ -12,6 +12,10 @@ builder.Services.AddDbContext<UserDataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
 );
 
+builder.Services.AddTransient<IUser,Userdetail>();
+
+builder.Services.AddMvc();
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -30,6 +34,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{record_id?}");
+
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();
