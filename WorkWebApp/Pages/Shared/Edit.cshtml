@@ -1,0 +1,56 @@
+@model WorkWebApp.ViewModels.UserViewModel
+
+<div>
+<h2>Update Employee</h2>
+ 
+    <form method="POST"  enctype="multipart/form-data" asp-controller="Admin" asp-action="Edit">
+       
+     @* <div asp-validation-summary="All"></div>  *@
+        
+      <div class="form-row">
+          <input asp-for="viewUser.record_id" hidden />
+        <div class="form-group col-md-6">
+            <label asp-for="firstname">First Name</label>
+            <input asp-for="viewUser.firstname" class="form-control">
+            <span asp-validation-for="firstname" class="aler-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="lastname">Last Name</label>
+             <input asp-for="viewUser.lastname" class="form-control" >
+            <span asp-validation-for="lastname" class="aler-danger"></span>
+        </div>
+ 
+        <div class="form-group col-md-6">
+            <label asp-for="mail">Email</label>
+             <input asp-for="viewUser.mail" class="form-control">
+            <span asp-validation-for="mail" class="aler-danger"></span>
+        </div>
+ 
+        <div class="form-group col-md-6">
+            <label asp-for="phonenumber">Phone Number</label>
+             <input asp-for="viewUser.phonenumber" class="form-control">
+            <span asp-validation-for="phonenumber" class="aler-danger"></span>
+        </div>
+ 
+        <div class="form-group col-md-6">
+            <label asp-for="birthday">Birthday</label>
+             <input asp-for="viewUser.birthday" class="form-control">
+            <span asp-validation-for="birthday" class="aler-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label asp-for="role">Role</label>
+             <input asp-for="viewUser.role" class="form-control">
+            <span asp-validation-for="role" class="aler-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label asp-for="department">Department</label>
+             <input asp-for="viewUser.department" class="form-control">
+            <span asp-validation-for="department" class="aler-danger"></span>
+        </div>
+      </div>
+      <br/>
+      <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Submit</button>
+    </form>    
+</div>
