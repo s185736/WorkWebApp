@@ -9,16 +9,18 @@
 
 <script>
     function PreviousSeven() {
-        location.href = "/Calendar?handler=PreviousSeven";
-    }
-    
-    function GoToToday() {
-        location.href = "/Calendar?handler=GoToToday";
-    }
-    
-    function NextSeven() {
-        location.href = "/Calendar?handler=NextSeven";
-    }
+           var currentDate = '@Model.CurrentDate.ToString("yyyy-MM-dd")';
+           location.href = "/Calendar?handler=PreviousSeven&currentDate=" + currentDate;
+       }
+       
+       function GoToToday() {
+           location.href = "/Calendar?handler=GoToToday";
+       }
+       
+       function NextSeven() {
+           var currentDate = '@Model.CurrentDate.ToString("yyyy-MM-dd")';
+           location.href = "/Calendar?handler=NextSeven&currentDate=" + currentDate;
+       }
 
 </script>
 

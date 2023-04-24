@@ -25,27 +25,27 @@ namespace WorkWebApp.Pages;
             {
                 CurrentDate = currentDate.Value;
             }
-            
+        
             Users = _context._user.ToList();
             Shifts = _context._shift.ToList();
         }
-
-        public IActionResult OnGetPreviousSeven()
+        
+        public IActionResult OnGetPreviousSeven(DateTime? currentDate)
         {
-            CurrentDate = CurrentDate.AddDays(-7);
-            return RedirectToPage("/Calendar", new { currentDate = CurrentDate });
+            var newDate = (currentDate ?? DateTime.Today).AddDays(-7);
+            return RedirectToPage("/Calendar", new { currentDate = newDate });
         }
 
-        public IActionResult OnGetNextSeven()
+        public IActionResult OnGetNextSeven(DateTime? currentDate)
         {
-            CurrentDate = CurrentDate.AddDays(7);
-            return RedirectToPage("/Calendar", new { currentDate = CurrentDate });
+            var newDate = (currentDate ?? DateTime.Today).AddDays(7);
+            return RedirectToPage("/Calendar", new { currentDate = newDate });
         }
 
         public IActionResult OnGetGoToToday()
         {
             CurrentDate = DateTime.Today;
-            return RedirectToPage("/Calendar", new { currentDate = CurrentDate });
+            return RedirectToPage("/Calendar", new { currentDate = DateTime.Today });
         }
     }
 
