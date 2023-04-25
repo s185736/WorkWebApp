@@ -19,13 +19,16 @@ namespace WorkWebApp.Controllers
             {
                 var result = user.GetEmployee().Result;
                 ViewBag.Employee = result;
-                return View("Employees");
+                //return View();
+                Response.Redirect(Request.Path);
+                return new RedirectResult("/Employees", permanent: true, preserveMethod: true);
             }
             catch (Exception)
             {
                 throw;
             }
-            return View();
+            //return View();
+            return new RedirectResult("/Employees", permanent: true, preserveMethod: true);
         }
 
         public IActionResult Edit(int record_id)
@@ -56,7 +59,9 @@ namespace WorkWebApp.Controllers
             };
             var result = user.UpdateEmployee(userModel);
             ModelState.Clear();
+            Response.Redirect(Request.Path);
             return View();
+            //return new RedirectResult("/Employees", permanent: true, preserveMethod: true);
         }
  
         public IActionResult Delete(int record_id)

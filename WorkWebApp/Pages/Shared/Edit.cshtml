@@ -1,6 +1,5 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model WorkWebApp.ViewModels.UserViewModel
-}
 
 <div>
     <h2>Update Employee</h2>
@@ -13,14 +12,12 @@
             <input asp-for="viewUser!.record_id" hidden />
             <div class="form-group col-md-6">
                 <label asp-for="firstname">First Name</label>
-                @*<input asp-for="viewUser.firstname" class="form-control">*@
-                <input asp-for="@Html.DisplayNameFor(model => model.firstname)" class="form-control">
+                <input asp-for="viewUser!.firstname" class="form-control">
                 <span class="aler-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="lastname">Last Name</label>
-                @*<input asp-for="viewUser!.lastname" class="form-control" >*@
-                 <input asp-for="@Html.DisplayNameFor(model => model.lastname)" class="form-control">
+                <input asp-for="viewUser!.lastname" class="form-control" >
                 <span asp-validation-for="lastname" class="aler-danger"></span>
             </div>
  
@@ -53,9 +50,14 @@
                 <input asp-for="viewUser!.department" class="form-control">
                 <span asp-validation-for="department" class="aler-danger"></span>
             </div>
-            @Html.DisplayNameFor(model => model.firstname)
+            @*@Html.DisplayNameFor(model => model.firstname)*@
         </div>
         <br/>
-        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Submit</button>
+        
+        <button type="submit" class="btn btn-lg btn-primary p-2">
+            <i class="bi bi-file-plus-fill"></i>
+            Submit
+        </button>
+        
     </form>
 </div>
