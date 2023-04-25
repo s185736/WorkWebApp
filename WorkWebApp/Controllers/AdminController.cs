@@ -19,7 +19,7 @@ namespace WorkWebApp.Controllers
             {
                 var result = user.GetEmployee().Result;
                 ViewBag.Employee = result;
-                return View();
+                return View("Employees");
             }
             catch (Exception)
             {
