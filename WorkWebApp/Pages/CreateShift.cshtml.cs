@@ -13,7 +13,7 @@ public class CreateShift : PageModel
     public string record_id { get; set; }
     
     [BindProperty]
-    public int Userid { get; set; }
+    public int UserID { get; set; }
     
     [BindProperty]
     //[noget med tid]
@@ -42,21 +42,31 @@ public class CreateShift : PageModel
     {
         _context = context;
     }
+    /*
+    public IActionResult OnDelete(int id)
+    {
+        // Delete the resource with the specified ID
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    */
 
     //Bruges til at poste til databasen
     public IActionResult OnPost()
     {
+        //var x = DateOfShift.ToString("yyyy-MM-dd");
         var shift = new _shift()
         {
-            userid = 1,
+            //Har hardcodet userid 1 hvergang, skal nok fikses så man gennem web kan få liste over users
+            userid = UserID,
             start_time = StartTime,
             end_time = EndTime,
             //skal ændres til deres rigtige, er sat til det samme for at teste
             checked_in_time = StartTime,
             checked_out_time = EndTime,
             //
-            break_duration = new TimeSpan(0, 30, 0) ,
-            dateofshift = new DateTime(2023,04,20)
+            break_duration = BreakDuration ,
+            dateofshift = DateOfShift
             
         };
         _context._shift.Add(shift);
@@ -66,4 +76,5 @@ public class CreateShift : PageModel
 
         return RedirectToPage("/Schedule");
     }
+    
 }

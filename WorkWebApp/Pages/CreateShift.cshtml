@@ -17,6 +17,10 @@
 <body>
 <form method="post">
     <div class="form-group">
+        <label for="startTime">User ID:</label>
+        <input type="number" class="form-control" id="userID" name="UserID" required>
+    </div>
+    <div class="form-group">
         <label for="startTime">Start time:</label>
         <input type="time" class="form-control" id="startTime" name="StartTime" required>
     </div>
@@ -24,7 +28,18 @@
         <label for="endTime">End time:</label>
         <input type="time" class="form-control" id="endTime" name="EndTime" required>
     </div>
-    <button type="submit" class="btn btn-primary">Create Shift</button>
+    <div class="form-group">
+            <label for="breakDuration">Break duration:</label>
+            <input type="time" class="form-control" id="breakDuration" name="BreakDuration" required>
+        </div>
+    <div class="form-group">
+        <label for="endTime">Date:</label>
+        <input type="date" class="form-control" id="date" name="Date" required>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Create Shift</button>
+    </div>
 </form>
+
 </body>
 </html>
