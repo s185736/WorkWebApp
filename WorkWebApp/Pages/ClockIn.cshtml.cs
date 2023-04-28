@@ -35,6 +35,7 @@ public class ClockInModel : PageModel
         };
         
         _context._shift.Add(shift);
+        //_context.SaveChanges();
 
         Console.WriteLine("Clocked In (Start Time) Registered: " + clockIn + ".");
     }
@@ -54,6 +55,7 @@ public class ClockInModel : PageModel
         };
 
         _context._shift.Add(shift);
+        //_context.SaveChanges();
             
         Console.WriteLine("Clocked Out (End Time) Registered: "+clockOut+".");
     }
