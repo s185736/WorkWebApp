@@ -2,14 +2,51 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkWebApp.data;
+using WorkWebApp.ViewModels;
 
-namespace WorkWebApp.Pages;
+namespace WorkWebApp.Pages.Shift;
 
 public class CreateShift : PageModel
 {
     private readonly UserDataContext _context;
+    public CreateShift(UserDataContext context)
+    {
+        _context = context;
+    }
     
     [BindProperty]
+    public ShiftViewModel ShiftViewModel { get; set; }
+
+    public IActionResult OnGet()
+    {
+        return Page();  
+    }
+    
+    public async Task<IActionResult> OnPostAsync()
+    {
+        var entry = _context.Add(new _shift());
+        entry.CurrentValues.SetValues(ShiftViewModel);
+        await _context.SaveChangesAsync();
+        return Redirect("ShiftHandler");
+    }
+    /*
+    <form method="post">
+        <div class="form-group">
+    <label for="startTime">Start time:</label>
+    <input type="time" class="form-control" id="startTime" name="StartTime" required>
+        </div>
+    <div class="form-group">
+    <label for="endTime">End time:</label>
+    <input type="time" class="form-control" id="endTime" name="EndTime" required>
+        </div>
+    <div class="form-group">
+    <label for="breakDuration">Break duration:</label>
+    <input type="time" class="form-control" id="breakDuration" name="BreakDuration" required>
+        </div>
+    <button type="submit" class="btn btn-primary">Create Shift</button>
+    </form>
+    
+    
     public string record_id { get; set; }
     
     [BindProperty]
@@ -38,10 +75,7 @@ public class CreateShift : PageModel
     //[Noget med dato]
     public DateTime DateOfShift { get; set; }
 
-    public CreateShift(UserDataContext context)
-    {
-        _context = context;
-    }
+    
 
     //Bruges til at poste til databasen
     public IActionResult OnPost()
@@ -66,4 +100,5 @@ public class CreateShift : PageModel
 
         return RedirectToPage("/Schedule");
     }
+    */
 }
