@@ -18,6 +18,8 @@ namespace WorkWebApp.Pages;
         public List<_user> Users { get; set; }
         public List<_shift> Shifts { get; set; }
         public DateTime CurrentDate { get; set; } = DateTime.Today;
+        public bool ShowModal { get; set; } = false; // Set the default value for your condition
+
 
         public void OnGet(DateTime? currentDate)
         {
@@ -35,6 +37,17 @@ namespace WorkWebApp.Pages;
             var newDate = (currentDate ?? DateTime.Today).AddDays(-7);
             return RedirectToPage("/Calendar", new { currentDate = newDate });
         }
+        
+        public IActionResult OnGetShowModal(DateTime? currentDate)
+        {
+            ShowModal = true;
+            if (!currentDate.HasValue)
+            {
+                currentDate = DateTime.Today;
+            }
+            return RedirectToPage("Calendar", new { currentDate });
+        }
+
 
         public IActionResult OnGetNextSeven(DateTime? currentDate)
         {
