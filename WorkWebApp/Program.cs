@@ -13,10 +13,14 @@ builder.Services.AddControllers();
 // used for the DB 
 builder.Services.AddDbContext<UserDataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
-    );
+);
+
 
 
 var app = builder.Build();
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

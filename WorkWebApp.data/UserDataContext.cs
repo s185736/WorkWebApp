@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WorkWebApp.data;
+using Microsoft.EntityFrameworkCore;
+
+namespace WorkWebApp.data;
 
 public class UserDataContext : DbContext
 {

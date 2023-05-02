@@ -6,7 +6,6 @@
         List<DateTime> days = Enumerable.Range(0, 7).Select(i => Model.CurrentDate.AddDays(i)).ToList();
     }
 
-
 <script>
     function PreviousSeven() {
            var currentDate = '@Model.CurrentDate.ToString("yyyy-MM-dd")';
