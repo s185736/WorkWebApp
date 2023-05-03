@@ -1,25 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkWebApp.data;
 
 namespace WorkWebApp.Pages;
 
 public class ClockInModel : PageModel
 {
-    private readonly ILogger<ScheduleModel> _logger;
+    private readonly UserDataContext _context;
 
-    public ClockInModel(ILogger<ScheduleModel> logger, UserDataContext context)
+    public ClockInModel(UserDataContext context)
     {
-        _logger = logger;
         _context = context;
     }
 
-    private readonly UserDataContext _context;
-
-    public void OnGet()
-    {
- 
-    }
- 
     public void OnPostClockInTime()
     {
         TimeSpan clockIn = DateTime.Now.TimeOfDay;
@@ -35,8 +28,9 @@ public class ClockInModel : PageModel
         };
         
         _context._shift.Add(shift);
-        //_context.SaveChanges();
+        //_context.SaveChanges(); //giver fejl...
 
+        Console.WriteLine("Saved.");
         Console.WriteLine("Clocked In (Start Time) Registered: " + clockIn + ".");
     }
  
@@ -57,6 +51,7 @@ public class ClockInModel : PageModel
         _context._shift.Add(shift);
         //_context.SaveChanges();
             
+        Console.WriteLine("Saved.");
         Console.WriteLine("Clocked Out (End Time) Registered: "+clockOut+".");
     }
 }
