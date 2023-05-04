@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkWebApp.data;
 
+namespace WorkWebApp.Pages;
 public class EmployeesModel : PageModel
 {
     private readonly UserDataContext _context;
