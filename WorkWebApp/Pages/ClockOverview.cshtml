@@ -1,0 +1,62 @@
+﻿@page
+@using WorkWebApp.data
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ClockOverviewModel
+
+@{ 
+    ViewData["Title"] = "Clock Overview";
+    var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    var currentDate = DateTime.Today;
+}
+<h1>@ViewData["Title"]</h1>
+
+<!DOCTYPE html>
+ 
+<html lang="">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="code.css">
+    <title>Clock In & Out</title>
+</head>
+
+<section id="overall-overview">
+    
+    <p>Your clocked in and out times will be recorded below, if something does not match then contact your immediate manager as soon as possible.</p>
+    
+    <h2 style="color:crimson; background-color:darksalmon; padding:10px;">
+        <h2>Times</h2>
+        <a class="text-center"></a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Clock In Time</th>
+                <th>Clock Out Time</th>
+            </tr>
+            </thead>
+            <tbody>
+                    
+                     @foreach (var session in Enumerable.Range(0, 2).Select(i => currentDate.AddDays(i)))
+                                            {
+                                                <td>
+                                                    @{
+                                                        var clockings = Model.Shifts.Where(s => s.checked_in_time.Hours == session.Hour && s.checked_out_time.Hours == session.Hour).ToList();
+                                                        if (clockings.Any())
+                                                        {
+                                                            foreach (var clocking in clockings)
+                                                            {
+                                                                <td>@clocking.checked_in_time</td>
+                                                                <td>@clocking.checked_out_time</td>
+                                                            }
+                                                        }
+                                                    }
+                                                </td>
+                                            }
+            </tbody>
+        </table>
+    </h2>
+</section>
+</html>
