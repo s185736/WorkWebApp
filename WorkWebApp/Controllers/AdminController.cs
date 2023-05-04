@@ -31,7 +31,7 @@ namespace WorkWebApp.Controllers
             return new RedirectResult("/Employees", permanent: true, preserveMethod: true);
         }
 
-        public IActionResult Edit(int record_id)
+        public IActionResult EditUser(int record_id)
         {
             UserViewModel userView = new UserViewModel()
             {
@@ -42,7 +42,7 @@ namespace WorkWebApp.Controllers
  
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(UserViewModel viewUser)
+        public IActionResult EditUser(UserViewModel viewUser)
         {
             _user userModel = new _user()
             {
@@ -64,7 +64,7 @@ namespace WorkWebApp.Controllers
             //return new RedirectResult("/Employees", permanent: true, preserveMethod: true);
         }
  
-        public IActionResult Delete(int record_id)
+        public IActionResult DeleteUser(int record_id)
         {
             UserViewModel userView = new UserViewModel()
             {
@@ -75,7 +75,7 @@ namespace WorkWebApp.Controllers
  
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Delete(UserViewModel viewModel)
+        public IActionResult DeleteUser(UserViewModel viewModel)
         {
             var result = user.DeleteEmployee(viewModel.record_id);
              

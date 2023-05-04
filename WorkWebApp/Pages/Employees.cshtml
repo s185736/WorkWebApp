@@ -37,8 +37,8 @@
                    <td>@item.birthday</td>
                    <td>@item.role</td>
                    <td>@item.department</td>
-                   <td><a asp-controller="Admin" class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.record_id">Edit</a></td>
-                   <td><a asp-controller="Admin" class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.record_id">Delete</a></td>
+                   <td><a asp-controller="Admin" class="btn btn-sm btn-primary" asp-action="EditUser" asp-route-id="@item.record_id">Edit</a></td>
+                   <td><a asp-controller="Admin" class="btn btn-sm btn-danger" asp-action="DeleteUser" asp-route-id="@item.record_id">Delete</a></td>
                </tr>
            }
            </tbody>

@@ -13,6 +13,14 @@ public class ClockInModel : PageModel
         _context = context;
     }
 
+    public IList<_user> Users { get;set; }
+    public IList<_shift> Shifts { get;set; }
+
+    public void OnGet()
+    {
+        Users = _context._user.ToList();
+        Shifts = _context._shift.ToList();
+    }
     public void OnPostClockInTime()
     {
         TimeSpan clockIn = DateTime.Now.TimeOfDay;
