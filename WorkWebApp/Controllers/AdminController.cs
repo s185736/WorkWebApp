@@ -21,6 +21,7 @@ namespace WorkWebApp.Controllers
 
         public async Task<IActionResult> DeleteUser(int? record_id)
         {
+            
             if (record_id != null)
             {
                 var user = await _context._user.FirstOrDefaultAsync(m => m.record_id == record_id).ConfigureAwait(false);
@@ -36,7 +37,7 @@ namespace WorkWebApp.Controllers
         {
             var user = await _context._user.FindAsync(record_id).ConfigureAwait(false);
             _context._user.Remove(user);
-            await _context.SaveChangesAsync().ConfigureAwait(false);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Employees));
         }
@@ -86,7 +87,17 @@ namespace WorkWebApp.Controllers
                     break;
             }
 
-            await _context.SaveChangesAsync().ConfigureAwait(false);
+            if (await TryUpdateModelAsync(
+                    user,
+                    "USER", 
+                    c => c.record_id, c => c.firstname, c => c.lastname,
+                    c => c.mail, c => c.phonenumber, c => c.birthday,
+                    c => c.role, c => c.department
+                ))
+            {
+                await _context.SaveChangesAsync();
+                return Redirect("/Admin/Employees");
+            }
             return RedirectToAction(nameof(Employees));
         }
 
