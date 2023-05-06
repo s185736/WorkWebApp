@@ -1,0 +1,44 @@
+@page "/shift/create"
+@model WorkWebApp.Pages.Shift.CreateShift
+
+@{
+    ViewData["Title"] = "Create Shifts";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+        <title>Index</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST">
+                <legend>Create A New Shift</legend>
+                <div class="mb-3">
+                    <label for="txtName" class="form-label">userID</label>
+                    <input asp-for="ShiftViewModel.userid" type="number" class="form-control" id="txtName"/>
+                </div>
+                <div class="mb-3">
+                    <label for="txtCost" class="form-label">Start time</label>
+                    <input asp-for="ShiftViewModel.start_time" type="time" class="form-control" id="txtCost"/>
+                </div>
+                <div class="mb-3">
+                    <label for="txtDescription" class="form-label">End time</label>
+                    <input asp-for="ShiftViewModel.end_time" type="time" class="form-control"
+                        id="txtDescription"></input>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+@page "/shift/home"
+@model WorkWebApp.Pages.Shift.ShiftHandler
+<!-- used https://www.learmoreseekmore.com/2022/01/dotnet6-razor-pages-crud-operations-with-entity-frameworkcore.html as reference -->
+@{
+
+    ViewData["Title"] = "Shift handler";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <a href="@Url.Content("./create")"><button class="btn btn-primary">Create a new shift</button></a>
+
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.AllShifts)
+        {
+            <div class="col-md-3 m-3">
+                <div class="card" style="width: 18rem;">
+                	<div class="card-body">
+                		<h5 class="card-title">@item.userid</h5>
+                		<h6 class="card-subtitle mb-2 text-muted">@item.start_time</h6>
+                		<p class="card-text">@item.end_time</p>
+                        <a href="@Url.Content("./edit?id=" + item.record_id)"><button class="btn btn-primary">Edit</button></a>
+                        <a href="@Url.Content("./delete?id=" + item.record_id)"><button class="btn btn-danger">Delete</button></a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
