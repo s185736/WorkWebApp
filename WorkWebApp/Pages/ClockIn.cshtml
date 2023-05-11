@@ -1,12 +1,9 @@
 ﻿@page
-@using WorkWebApp.data
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model ClockInModel
 
 @{ 
     ViewData["Title"] = "Clock In";
-    var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    var currentDate = DateTime.Today;
 }
 <h1>@ViewData["Title"]</h1>
 

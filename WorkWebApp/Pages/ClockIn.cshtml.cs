@@ -24,21 +24,17 @@ public class ClockInModel : PageModel
     
     public async Task<IActionResult> OnPostClockInTime()
     {
-        TimeSpan clockIn = DateTime.Now.TimeOfDay;
-        
         var shift = new _shift()
         {
-            checked_out_time = clockIn
+            userid = ShiftViewModel.userid,
+            checked_in_time = DateTime.Now.TimeOfDay
         };
 
-        var entry = _context.Add(new _shift()); 
-        //_context._shift.Add(shift);
-        entry.CurrentValues.SetValues(ShiftViewModel);
+        _context._shift.Add(shift);
         await _context.SaveChangesAsync();
 
-        Console.WriteLine("Saved.");
-        Console.WriteLine("Clocked In Registered: "+clockIn+".");
-        
+        Console.WriteLine("Clocked In Registered: "+shift.checked_in_time+".");
+    
         return Redirect("/ClockIn");
     }
  
