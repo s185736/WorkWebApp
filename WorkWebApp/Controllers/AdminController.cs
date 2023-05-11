@@ -36,6 +36,17 @@ namespace WorkWebApp.Controllers
         public async Task<IActionResult> DeleteUser(int record_id)
         {
             var user = await _context._user.FindAsync(record_id).ConfigureAwait(false);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var shifts = await _context._shift.Where(s => s.userid == record_id).ToListAsync().ConfigureAwait(false);
+            if (shifts != null && shifts.Any())
+            {
+                _context._shift.RemoveRange(shifts);
+            }
+    
             _context._user.Remove(user);
             await _context.SaveChangesAsync();
 
