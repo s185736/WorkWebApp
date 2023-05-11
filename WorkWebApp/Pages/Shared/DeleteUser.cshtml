@@ -1,0 +1,67 @@
+@model WorkWebApp.data._user
+
+@{
+    ViewData["Title"] = "DeleteUser";
+}
+
+<h2>Delete an Employee</h2>
+
+<h3>You are about to delete this Employee, this can't be undone!</h3>
+<div>
+    <hr />
+         <dl class="row">
+                <dt class="col-sm-4">
+                    <th>First Name:</th>
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.firstname)
+                </dd>
+                <dt class="col-sm-4">
+                    <th>Last Name:</th>
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.lastname)
+                </dd>
+               <dt class="col-sm-4">
+                   <th>Email:</th>
+               </dt>
+               <dd class="col-sm-8">
+                   @Html.DisplayFor(model => model.mail)
+               </dd>
+               <dt class="col-sm-4">
+                   <th>Phone Number:</th>
+               </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.phonenumber)
+                </dd>
+                <dt class="col-sm-4">
+                    <th>Birthday:</th>
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.birthday)
+                </dd>
+                <dt class="col-sm-4">
+                    <th>Role:</th>
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.role)
+                </dd>
+                <dt class="col-sm-4">
+                    <th>Department:</th>
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.department)
+                </dd>
+         </dl>
+
+    
+    <form asp-action="DeleteUser">
+        <input type="hidden" asp-for="record_id"/>
+         <p style="margin-right:15px;">
+            <input class="btn btn-success btn-lg btn-block" type="submit" value="Yes"/>
+            <a class="btn btn-danger btn-lg btn-block" asp-action="Employees">No</a>
+        </p>
+    </form>
+    
+
+ </div>

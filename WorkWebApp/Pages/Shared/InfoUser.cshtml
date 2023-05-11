@@ -1,0 +1,61 @@
+@model WorkWebApp.data._user
+@{
+    ViewData["Title"] = "InfoUser";
+}
+
+<div>
+    <h1>Employee Information</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            <th>First Name:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+        <dt class="col-sm-4">
+            <th>Last Name:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+        <dt class="col-sm-4">
+            <th>Email:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+        <dt class="col-sm-4">
+            <th>Phone Number:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.phonenumber)
+        </dd>
+        <dt class="col-sm-4">
+            <th>Birthday:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.birthday)
+        </dd>
+        <dt class="col-sm-4">
+            <th>Role:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.role)
+        </dd>
+        <dt class="col-sm-4">
+            <th>Department:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.department)
+        </dd>
+    </dl>
+
+    <div>
+        <p style="margin-right:15px;">
+            <a class="btn btn-warning btn-lg btn-block" asp-action="EditUser" asp-route-record_id="@Model.record_id">Edit</a>
+             <a class="btn btn-danger btn-lg btn-block" asp-action="DeleteUser" asp-route-record_id="@Model.record_id">Delete</a>
+            <a class="btn btn-dark btn-lg btn-block" asp-action="Employees">Back</a>
+        </p>
+    </div>
+</div>
