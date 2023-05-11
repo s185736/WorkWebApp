@@ -21,42 +21,74 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="code.css">
     <title>Clock In & Out</title>
+    
+    <style>
+        div.ex3s {
+            width: 100%;
+            height: 400px;
+            overflow: auto;
+        }
+    </style>
 </head>
 
-<section id="overall-overview">
     
     <p>Your clocked in and out times will be recorded below, if something does not match then contact your immediate manager as soon as possible.</p>
     
-    <h2 style="color:crimson; background-color:darksalmon; padding:10px;">
-        <h2>Times</h2>
-        <a class="text-center"></a>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Clock In Time</th>
-                <th>Clock Out Time</th>
-            </tr>
-            </thead>
-            <tbody>
-                    
-                     @foreach (var session in Enumerable.Range(0, 2).Select(i => currentDate.AddDays(i)))
-                                            {
-                                                <td>
-                                                    @{
-                                                        var clockings = Model.Shifts.Where(s => s.checked_in_time.Hours == session.Hour && s.checked_out_time.Hours == session.Hour).ToList();
-                                                        if (clockings.Any())
-                                                        {
-                                                            foreach (var clocking in clockings)
-                                                            {
-                                                                <td>@clocking.checked_in_time</td>
-                                                                <td>@clocking.checked_out_time</td>
-                                                            }
-                                                        }
-                                                    }
-                                                </td>
-                                            }
-            </tbody>
-        </table>
-    </h2>
-</section>
+   <h2>Clock In Times</h2>
+    <div class="ex3s">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Clocked In Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.AllShifts)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.userid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.checked_in_time)
+                        </td>
+                       
+                        <td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+<h2>Clock Out Times</h2>
+<div class="ex3s">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Clocked Out Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.AllShifts)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.userid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.checked_out_time)
+                            </td>
+                            <td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
 </html>
