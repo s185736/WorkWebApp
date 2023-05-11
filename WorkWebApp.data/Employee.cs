@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace WorkWebApp.data;
 
-public class Employee
+public class Employee : _user
 {
     public int Id { get; set; }
     [Required]

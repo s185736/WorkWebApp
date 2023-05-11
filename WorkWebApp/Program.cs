@@ -7,11 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddControllers();
+
+
 // used for the DB 
 builder.Services.AddDbContext<UserDataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("VagtplanDB"))
 );
 
+builder.Services.AddTransient<IUser,Userdetail>();
+
+builder.Services.AddMvc();
+builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
@@ -34,6 +41,13 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Admin}/{action=Index}/{record_id?}");
+
 app.MapRazorPages();
+app.MapControllers();
+
+app.MapControllers();
 
 app.Run();
