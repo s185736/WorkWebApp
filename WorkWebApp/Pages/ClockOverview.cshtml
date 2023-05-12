@@ -28,6 +28,9 @@
             height: 400px;
             overflow: auto;
         }
+        .zero-time {
+            visibility: hidden;
+        }
     </style>
 </head>
 
@@ -52,9 +55,15 @@
                             @Html.DisplayFor(modelItem => item.userid)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.checked_in_time)
+                            @if (item.checked_in_time == TimeSpan.Zero)
+                            {
+                                @:&nbsp;<!--display an empty space-->
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.checked_in_time)
+                            }
                         </td>
-                       
                         <td>
                     </tr>
                 }
@@ -81,7 +90,14 @@
                                 @Html.DisplayFor(modelItem => item.userid)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.checked_out_time)
+                                @if (item.checked_out_time == TimeSpan.Zero)
+                                {
+                                    @:&nbsp;<!--display an empty space-->
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.checked_out_time)
+                                }
                             </td>
                             <td>
                         </tr>
