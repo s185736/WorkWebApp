@@ -82,7 +82,6 @@
                                 foreach (var shift in shifts)
                                 {
                                     <div class="shift-time" style="background-color: @employee.color">
-                                        <a asp-action="InfoShift" class="btn btn-info"  asp-route-record_id="@shift.record_id">More</a>
                                         <a href="@Url.Content("/shift/edit?id=" + shift.record_id)"><button id="shiftbtn">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</button></a>
                                     </div>
                                     
