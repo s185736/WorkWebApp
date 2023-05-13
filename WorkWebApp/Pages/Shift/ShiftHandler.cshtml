@@ -1,5 +1,5 @@
-@page "/shift/home"
-@model WorkWebApp.Pages.Shift.ShiftHandler
+@page
+@model ShiftHandler
 <!-- used https://www.learmoreseekmore.com/2022/01/dotnet6-razor-pages-crud-operations-with-entity-frameworkcore.html as reference -->
 @{
 
@@ -24,8 +24,9 @@
                 		<h5 class="card-title">@item.userid</h5>
                 		<h6 class="card-subtitle mb-2 text-muted">@item.start_time</h6>
                 		<p class="card-text">@item.end_time</p>
-                        <a href="@Url.Content("./edit?id=" + item.record_id)"><button class="btn btn-primary">Edit</button></a>
-                        <a href="@Url.Content("./delete?id=" + item.record_id)"><button class="btn btn-danger">Delete</button></a>
+                        <td class="text-center">
+                            <a asp-action="InfoShift" class="btn btn-info"  asp-route-record_id="@item.record_id">More</a>
+                        </td>
                     </div>
                 </div>
             </div>

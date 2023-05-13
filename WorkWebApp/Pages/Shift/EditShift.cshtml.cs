@@ -18,7 +18,6 @@ public class EditShift : PageModel
     [BindProperty]
     public ShiftViewModel? ShiftViewModel { get; set; }
 
-
     
     public async Task<IActionResult> OnGetAsync(int id)
     {
@@ -55,7 +54,7 @@ public class EditShift : PageModel
             ))
         {
             await _context.SaveChangesAsync();
-            return Redirect("home");
+            return Redirect("/");
         }
  
         return Page();

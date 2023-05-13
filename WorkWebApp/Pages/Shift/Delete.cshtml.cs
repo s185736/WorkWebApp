@@ -53,7 +53,7 @@ public class DeleteShift : PageModel
         {
             _context._shift.Remove(recordToDelete);
             await _context.SaveChangesAsync();
-            return Redirect("./home");
+            return Redirect("/");
         }
         catch
         {

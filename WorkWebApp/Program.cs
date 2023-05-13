@@ -42,8 +42,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
+    name: "user",
     pattern: "{controller=Admin}/{action=Index}/{record_id?}");
+
+app.MapControllerRoute(
+    name: "shift",
+    pattern: "{controller=Shift}/{action=Index}/{record_id?}");
 
 app.MapRazorPages();
 app.MapControllers();

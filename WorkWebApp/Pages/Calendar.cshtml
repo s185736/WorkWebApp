@@ -82,9 +82,8 @@
                                 foreach (var shift in shifts)
                                 {
                                     <div class="shift-time" style="background-color: @employee.color">
-                                        <a href="@Url.Content("/shift/edit?id=" + shift.record_id)"><button id="shiftbtn">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</button></a>
+                                        <a asp-action="InfoShift" class="btn btn-info"  asp-route-record_id="@shift.record_id">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</a>
                                     </div>
-                                    
                                 }
                             }
                             if (!shifts.Any())
@@ -102,6 +101,6 @@
 
 @*
 <a href="@Url.Content("/shift/edit?id=" + shift.record_id)"><button id="shiftbtn">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</button></a>
-                                    
+     <a href="@Url.Content("/shift/edit?id=" + shift.record_id)"><button id="shiftbtn">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</button></a>                               
 *@
 
