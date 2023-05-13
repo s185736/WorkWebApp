@@ -32,7 +32,7 @@ public class Login : PageModel
 
         if (user != null)
         {
-            return RedirectToPage("/Index");
+            return Redirect("/home");
         }
         else
         {

@@ -22,17 +22,22 @@
             <form method="POST">
                 <legend>Create A New Shift</legend>
                 <div class="mb-3">
-                    <label for="txtName" class="form-label">userID</label>
-                    <input asp-for="ShiftViewModel.userid" type="number" class="form-control" id="txtName"/>
+                    <label for="userID" class="form-label">userID</label>
+                    <input asp-for="ShiftViewModel.userid" type="number" class="form-control" id="userID"/>
                 </div>
                 <div class="mb-3">
-                    <label for="txtCost" class="form-label">Start time</label>
-                    <input asp-for="ShiftViewModel.start_time" type="time" class="form-control" id="txtCost"/>
+                    <label for="startTime" class="form-label">Start time</label>
+                    <input asp-for="ShiftViewModel.start_time" type="time" class="form-control" id="startTime"/>
                 </div>
                 <div class="mb-3">
-                    <label for="txtDescription" class="form-label">End time</label>
+                    <label for="endTime" class="form-label">End time</label>
                     <input asp-for="ShiftViewModel.end_time" type="time" class="form-control"
-                        id="txtDescription"></input>
+                           id="endTime"/>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input asp-for="ShiftViewModel.dateofshift" type="date" class="form-control"
+                           id="date"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
