@@ -25,7 +25,7 @@
                 		<h6 class="card-subtitle mb-2 text-muted">@item.start_time</h6>
                 		<p class="card-text">@item.end_time</p>
                         <td class="text-center">
-                            <a asp-action="InfoShift" class="btn btn-info"  asp-route-record_id="@item.record_id">More</a>
+                            <a asp-controller="Shift" asp-action="InfoShift" class="btn btn-info" asp-route-record_id="@item.record_id">More</a>
                         </td>
                     </div>
                 </div>
