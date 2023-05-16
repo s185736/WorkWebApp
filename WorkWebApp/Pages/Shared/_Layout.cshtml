@@ -19,10 +19,13 @@
 
 <body>
 
-@*
-@if (ViewContext.RouteData.Values["Login"].ToString() != "/login")
-*@
-<header>
+@if (Context.Request.Path == "/")
+{
+    // Hide the header
+}
+else
+{
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">WorkWebApp</a>
@@ -64,7 +67,7 @@
             </div>
         </nav>
     </header>
-
+}
 <div class="container body-content">
     <main role="main" class="pb-3">
         @RenderBody()
