@@ -27,7 +27,7 @@ public class CreateShift : PageModel
         var entry = _context.Add(new _shift());
         entry.CurrentValues.SetValues(ShiftViewModel);
         await _context.SaveChangesAsync();
-        return Redirect("/schedule");
+        return Redirect("/Calendar");
     }
     /*
     <form method="post">

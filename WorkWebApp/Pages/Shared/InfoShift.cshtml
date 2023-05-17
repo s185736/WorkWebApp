@@ -18,22 +18,32 @@
         </dt>
         <dd class="col-sm-8">
             @Html.DisplayFor(model => model.userid)
-        </dd><dt class="col-sm-4">
+        </dd>
+        <dt class="col-sm-4">
             <th>Start time:</th>
         </dt>
         <dd class="col-sm-8">
             @Html.DisplayFor(model => model.start_time)
-        </dd><dt class="col-sm-4">
+        </dd>
+        <dt class="col-sm-4">
             <th>End time:</th>
         </dt>
         <dd class="col-sm-8">
             @Html.DisplayFor(model => model.end_time)
-        </dd><dt class="col-sm-4">
+        </dd>
+        <dt class="col-sm-4">
+            <th>Break duration:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.break_duration)
+        </dd>
+        <dt class="col-sm-4">
             <th>Date:</th>
         </dt>
         <dd class="col-sm-8">
-            @Html.DisplayFor(model => model.dateofshift)
+        @Html.DisplayFor(model => model.dateofshift.Day)/@Html.DisplayFor(model => model.dateofshift.Month)/@Html.DisplayFor(model => model.dateofshift.Year)
     </dl>
+    <hr />
     
     <div>
         <p style="margin-right:15px;">

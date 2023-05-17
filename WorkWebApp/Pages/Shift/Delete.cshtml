@@ -2,7 +2,7 @@
 @model WorkWebApp.Pages.Shift.DeleteShift
 
 @{
-    ViewData["Title"] = "Delete Shifts";
+    ViewData["Title"] = "Delete Shift";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -22,12 +22,14 @@
     </div>
     <div class="row">
         <div class="col-md-3 m-3">
-            <legend>Confirm To Delete</legend>
+            <legend>Delete shift for user @Model.ShiftViewModel.userid </legend>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">@Model.ShiftViewModel.userid</h5>
+                    <h5 class="card-title">@Model.ShiftViewModel.record_id</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@Model.ShiftViewModel.start_time</h6>
-                    <p class="card-text">@Model.ShiftViewModel.end_time</p>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShiftViewModel.end_time</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShiftViewModel.dateofshift.Day/@Model.ShiftViewModel.dateofshift.Month/@Model.ShiftViewModel.dateofshift.Year</h6>
+
                     <div>
                         <form method="post">
                             <button type="submit" class="btn btn-danger">Confirm Delete</button>

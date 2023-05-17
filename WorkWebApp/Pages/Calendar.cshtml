@@ -88,7 +88,8 @@
                             }
                             if (!shifts.Any())
                             {
-                                <span id="noShiftText">no shift</span>
+                                <a href="@Url.Content("/Shift/create")"><button id="shiftbtn">Create shift</button></a>
+                                <span id="noShiftText">No shift</span>
                             }
                         }
                     </td>
@@ -98,9 +99,4 @@
         </tbody>
         <a asp-page="/Index">Home page</a>
     </table>
-
-@*
-<a href="@Url.Content("/shift/edit?id=" + shift.record_id)"><button id="shiftbtn">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</button></a>
-     <a href="@Url.Content("/shift/edit?id=" + shift.record_id)"><button id="shiftbtn">@shift.start_time.ToString("hh\\:mm") - @shift.end_time.ToString("hh\\:mm")</button></a>                               
-*@
 

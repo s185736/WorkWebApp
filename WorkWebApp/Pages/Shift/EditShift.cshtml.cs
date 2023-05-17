@@ -28,7 +28,9 @@ public class EditShift : PageModel
                 {
                     userid = _.userid,
                     start_time = _.start_time,
-                    end_time = _.end_time
+                    end_time = _.end_time,
+                    break_duration = _.break_duration,
+                    dateofshift = _.dateofshift
                 }).FirstOrDefaultAsync();
  
         if (ShiftViewModel == null)
@@ -50,11 +52,11 @@ public class EditShift : PageModel
         if (await TryUpdateModelAsync<_shift>(
                 shiftToUpdate,
                 "ShiftViewModel", 
-                c => c.userid, c => c.start_time, c => c.end_time
+                c => c.userid, c => c.start_time, c => c.end_time, c=> c.dateofshift, c=> c.break_duration
             ))
         {
             await _context.SaveChangesAsync();
-            return Redirect("/");
+            return Redirect("/Calendar");
         }
  
         return Page();

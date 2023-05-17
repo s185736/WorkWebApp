@@ -24,9 +24,11 @@ public class DeleteShift : PageModel
             .Select(_ =>
                 new ShiftViewModel
                 {
+                    record_id = _.record_id,
                     userid = _.userid,
                     start_time = _.start_time,
-                    end_time = _.end_time
+                    end_time = _.end_time,
+                    dateofshift = _.dateofshift
                 }).FirstOrDefaultAsync();
  
         if (ShiftViewModel == null)
@@ -53,7 +55,7 @@ public class DeleteShift : PageModel
         {
             _context._shift.Remove(recordToDelete);
             await _context.SaveChangesAsync();
-            return Redirect("/");
+            return Redirect("/Calendar");
         }
         catch
         {
