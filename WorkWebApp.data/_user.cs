@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices.JavaScript;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Identity;
 
 namespace WorkWebApp.data;
 

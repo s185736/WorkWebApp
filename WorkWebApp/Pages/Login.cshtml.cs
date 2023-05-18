@@ -32,8 +32,7 @@ public class Login : PageModel
 
         if (user != null)
         {
-            return Redirect("/home");
-        }
+        return Redirect($"/home?userid={user.record_id}"); }
         else
         {
             ModelState.AddModelError(string.Empty, "Invalid email or password");

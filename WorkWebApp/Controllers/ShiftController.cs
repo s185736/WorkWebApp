@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkWebApp.data;
+using WorkWebApp.Pages.Shared;
 using WorkWebApp.ViewModels;
 
 namespace WorkWebApp.Controllers;
@@ -31,10 +32,41 @@ public class ShiftController : Controller
         if (record_id != null)
         {
             var shift = await _context._shift.FirstOrDefaultAsync(m => m.record_id == record_id).ConfigureAwait(false);
-            return shift == null ? NotFound() : View(shift);
+        
+            if(shift == null)
+            {
+                return NotFound();
+            }
+        
+            var users = await _context._user.ToListAsync();
+
+            var model = new InfoShiftModel(_context)
+            {
+                Shift = shift,
+                Users = users
+            };
+
+            return View(model);
         }
 
         return NotFound();
+    }
+    
+    public IActionResult SwapRequest(int userid, int selectedUser, int record_id)
+    {
+        var swapRequest = new _shiftswaprequest
+        {
+            requestinguserid = userid,
+            requesteduserid = selectedUser,
+            shiftid = record_id,
+            status = "Pending"
+        };
+        Console.WriteLine(swapRequest);
+
+        _context._shiftswaprequest.Add(swapRequest);
+        _context.SaveChanges();
+        Console.WriteLine("Saved");
+        return RedirectToAction("InfoShift", new { record_id = record_id });
     }
     
     

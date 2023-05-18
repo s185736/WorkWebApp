@@ -19,6 +19,11 @@ builder.Services.AddTransient<IUser,Userdetail>();
 
 builder.Services.AddMvc();
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "MyAuthenticationScheme";
+}).AddCookie("MyAuthenticationScheme");
+
 
 
 var app = builder.Build();
