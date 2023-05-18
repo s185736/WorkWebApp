@@ -59,9 +59,8 @@ namespace WorkWebApp.Pages
             _context.SaveChanges();
             
             Console.WriteLine("Saved");
-
-
-            return RedirectToPage("/Login");
+            
+            return Redirect("/home");
         }
         
         private string GeneratePastelColor()
