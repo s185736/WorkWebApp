@@ -1,0 +1,103 @@
+﻿@page
+@using WorkWebApp.data
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ClockOverviewModel
+
+@{ 
+    ViewData["Title"] = "Clock Overview";
+    var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    var currentDate = DateTime.Today;
+}
+<h1>@ViewData["Title"]</h1>
+
+<!DOCTYPE html>
+ 
+<html lang="">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="code.css">
+    <title>Clock In & Out</title>
+    
+    <style>
+        div.ex3s {
+            width: 100%;
+            height: 400px;
+            overflow: auto;
+        }
+        .zero-time {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<p>Your clocked in and out times will be recorded below, if something does not match then contact your immediate manager as soon as possible.</p>
+    
+   <h2>Clock In Times</h2>
+    <div class="ex3s">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Clocked In Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.AllShifts)
+                       {
+                           @if (item.checked_in_time != TimeSpan.Zero)
+                           {
+                               <tr>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.userid)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.checked_in_time)
+                                   </td>
+                                   <td>
+                                   </td>
+                               </tr>
+                           }
+                       }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+<h2>Clock Out Times</h2>
+<div class="ex3s">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Clocked Out Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                   @foreach (var item in Model.AllShifts)
+                   {
+                       @if (item.checked_out_time != TimeSpan.Zero)
+                       {
+                           <tr>
+                               <td>
+                                   @Html.DisplayFor(modelItem => item.userid)
+                               </td>
+                               <td>
+                                   @Html.DisplayFor(modelItem => item.checked_out_time)
+                               </td>
+                               <td>
+                               </td>
+                           </tr>
+                       }
+                   }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+</html>

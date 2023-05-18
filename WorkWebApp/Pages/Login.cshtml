@@ -1,0 +1,40 @@
+﻿@page "/"
+@model WorkWebApp.Pages.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+    <h1>Login</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>
+        <p>Er du ikke oprettet endnu?</p>
+        <a asp-page="/CreateProfile">Klik her!</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+@page "/Shift/InfoShift/delete"
+@model WorkWebApp.Pages.Shift.DeleteShift
+
+@{
+    ViewData["Title"] = "Delete Shift";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+        <title>Index</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3 m-3">
+            <legend>Delete shift for user @Model.ShiftViewModel.userid </legend>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.ShiftViewModel.record_id</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShiftViewModel.start_time</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShiftViewModel.end_time</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.ShiftViewModel.dateofshift.Day/@Model.ShiftViewModel.dateofshift.Month/@Model.ShiftViewModel.dateofshift.Year</h6>
+
+                    <div>
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

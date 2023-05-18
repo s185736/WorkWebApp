@@ -1,60 +1,68 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkWebApp.data;
+using WorkWebApp.ViewModels;
 
 namespace WorkWebApp.Pages;
 
 public class ClockInModel : PageModel
 {
-    private readonly ILogger<ScheduleModel> _logger;
+    private readonly UserDataContext _context;
 
-    public ClockInModel(ILogger<ScheduleModel> logger, UserDataContext context)
+    public ClockInModel(UserDataContext context)
     {
-        _logger = logger;
         _context = context;
     }
 
-    private readonly UserDataContext _context;
+    [BindProperty]
+    public ShiftViewModel? ShiftViewModel { get; set; }
 
-    public void OnGet()
+    public IActionResult OnGet()
     {
- 
+        return Page();  
     }
- 
-    public void OnPostClockInTime()
+    
+    public async Task<IActionResult> OnPostClockInTime()
     {
-        TimeSpan clockIn = DateTime.Now.TimeOfDay;
-        var clockInDate = DateTime.Now.ToString("MM/dd/yyyy");
-        var clockInTime = DateTime.Now.ToString("HH:m:s");
-        ViewData["Message"] = "Welcome back, you have now clocked in! " +
-                              "Date: "+clockInDate+". " +
-                              "Time Clocked in at: "+clockInTime+".";
+        var clockIn = DateTime.Now.ToString("hh:mm:ss");
 
-        var shift = new _shift()
+        if (ShiftViewModel != null)
         {
-            checked_in_time = clockIn
-        };
-        
-        _context._shift.Add(shift);
+            var shift = new _shift()
+            {
+                userid = ShiftViewModel.userid,
+                checked_in_time = TimeSpan.Parse(clockIn)
+            };
+            ViewData["Message"] = "Clocked In Registered: "+shift.checked_in_time+".";
+            _context._shift.Add(shift);
+            await _context.SaveChangesAsync();
 
-        Console.WriteLine("Clocked In (Start Time) Registered: " + clockIn + ".");
+            Console.WriteLine("Clocked In Registered: "+shift.checked_in_time+".");
+        }
+        return Redirect("/ClockIn");
     }
  
-    public void OnPostClockOutTime()
+    public async Task<IActionResult> OnPostClockOutTime()
     {
-        TimeSpan clockOut = DateTime.Now.TimeOfDay;
-        var clockOutDate = DateTime.Now.ToString("MM/dd/yyyy");
-        var clockOutTime = DateTime.Now.ToString("HH:m:s");
-        ViewData["Message"] = "Goodbye, you have now clocked out! " +
+        var clockOut = DateTime.Now.ToString("hh:mm:ss");
+        var clockOutDate = DateTime.Now.ToString("F");
+        ViewData["Message"] = "Welcome back, you have now clocked out! " +
                               "Date: "+clockOutDate+". " +
-                              "Time Clocked out at: "+clockOutTime+".";
-        
-        var shift = new _shift()
-        {
-            checked_out_time = clockOut
-        };
+                              "Time Clocked in at: "+clockOut+".";
 
-        _context._shift.Add(shift);
-            
-        Console.WriteLine("Clocked Out (End Time) Registered: "+clockOut+".");
+        if (ShiftViewModel != null)
+        {
+            var shift = new _shift()
+            {
+                userid = ShiftViewModel.userid,
+                checked_out_time = TimeSpan.Parse(clockOut)
+            };
+            _context._shift.Add(shift);
+            await _context.SaveChangesAsync();
+
+            Console.WriteLine("Clocked Out Registered: "+shift.checked_out_time+".");
+        }
+
+        return Redirect("/ClockIn");
     }
 }

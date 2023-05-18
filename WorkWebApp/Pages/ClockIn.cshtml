@@ -1,29 +1,25 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model ClockInModel
-@{
+
+@{ 
     ViewData["Title"] = "Clock In";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Her på siden skal man kunne stemple sig ind på arbejdet så timen bliver talt..</p>
-<p>Your times will be recorded below. If you arrive earlier, it will also be sent to your manager, but be aware that as long as your manager has not given you permission to arrive earlier, your registration will be changed to your normal time.</p>
-
-<ol>
-    <li>You must be dressed when you clock in.</li>
-    <li>You must sign out as soon as the department is closed, and not after you have changed clothes and or other things.</li>
-    <li>If you have forgotten to clock in when you came to work, you must notify the department manager as soon as possible.</li>
-</ol>
-
 <!DOCTYPE html>
  
-<html>
+<html lang="">
 <head>
     <meta name="viewport" content="width=device-width"/>
- +    <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-     <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+        #overall-overview {
+             overflow-y: auto;
+         }
          #product-overview {
              width: 1200px;
              margin:  auto;
@@ -58,35 +54,51 @@
               height:  100%;
          }
      </style>
-     <link rel="stylesheet" href="code.css">
-     <title>Clock In & Out</title>
+    <link rel="stylesheet" href="code.css">
+    <title>Clock In & Out</title>
 </head>
-<body>
-<main>
-       <section id="product-overview">
-     <form method="post">
-         <table>
-             <tr>
-                 <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-page-handler="ClockInTime"/></td>
-                 <div> </div>
-                 <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-page-handler="ClockOutTime"/></td>
-             </tr>
-         </table>
-     </form>
-     </section>
-         </main>
 
-@if (ViewData["Message"] != null)
-{
-    <script type="text/javascript">
+<section id="overall-overview">
+    
+   <p>Your times will be recorded below. If you arrive earlier, it will also be sent to your manager, but be aware that as long as your manager has not given you permission to arrive earlier, your registration will be changed to your normal time.</p>
+
+    <ol>
+        <li>You must be dressed when you clock in.</li>
+        <li>You must sign out as soon as the department is closed, and not after you have changed clothes and or other things.</li>
+        <li>If you have forgotten to clock in when you came to work, you must notify the department manager as soon as possible.</li>
+    </ol>
+    <p>You've to enter your Employee Number in order to be registered.</p>
+    <body>
+    <main>
+        <section id="product-overview">
+            <form method="post">
+                <table>
+                    
+                    <div class="mb-3">
+                        <label for="txtName" class="form-label">userID</label>
+                        <input asp-for="ShiftViewModel!.userid" type="number" class="form-control" id="txtName"/>
+                    </div>
+                    
+                    <tr>
+                        <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-for="ShiftViewModel!.checked_in_time" asp-page-handler="ClockInTime"/></td>
+                        <div> </div>
+                        <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-for="ShiftViewModel!.checked_out_time" asp-page-handler="ClockOutTime"/></td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </main>
+
+    @if (ViewData["Message"] != null)
+    {
+        <script type="text/javascript">
             window.onload = function () {
                 alert('@ViewData["Message"]');
             };
         </script>
-}
-</body>
-</html>
-
-<h2 style="color:crimson; background-color:darksalmon; padding:10px;">
+    }
+    </body>
     
-</h2>
+</section>
+<a href="/ClockOverview">Click to see an overview of your times..</a>
+</html>

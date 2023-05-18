@@ -1,0 +1,68 @@
+@model WorkWebApp.data._user
+
+@{
+    ViewData["Title"] = "EditUser";
+}
+
+<div>
+    <h1>Edit Employee</h1>
+
+    <div class="row">
+        <div>
+            <hr />
+            <form asp-action="EditUser">
+                <div asp-validation-summary="ModelOnly"></div>
+                @if (ViewBag.EditAbleTrue == true)
+                {
+                    <input type="hidden" asp-for="record_id" />
+                }
+                <div class="form-group">
+                    <label asp-for="firstname" class="control-label"></label>
+                    <input asp-for="firstname" class="form-control" />
+                    <span asp-validation-for="firstname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="lastname" class="control-label"></label>
+                    <input asp-for="lastname" class="form-control" />
+                    <span asp-validation-for="lastname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="mail" class="control-label"></label>
+                    <input asp-for="mail" class="form-control" />
+                    <span asp-validation-for="mail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="phonenumber" class="control-label"></label>
+                    <input asp-for="phonenumber" class="form-control" />
+                    <span asp-validation-for="phonenumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="birthday" class="control-label"></label>
+                    <input asp-for="birthday" class="form-control" />
+                    <span asp-validation-for="birthday" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="role" class="control-label"></label>
+                    <input asp-for="role" class="form-control" />
+                    <span asp-validation-for="role" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="department" class="control-label"></label>
+                    <input asp-for="department" class="form-control" />
+                    <span asp-validation-for="department" class="text-danger"></span>
+                </div>
+                <hr />
+                
+                <div class="form-group">
+                    <input class="btn btn-success btn-lg btn-block" type="submit" value="Save" />
+                    <a class="btn btn-dark btn-lg btn-block" asp-action="Employees">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*source: https://stackoverflow.com/questions/32645632/asp-net-do-i-need-to-add-javascript-source-of-validationscriptspartial-cshtml*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

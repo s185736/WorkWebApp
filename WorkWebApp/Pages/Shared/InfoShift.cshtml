@@ -1,0 +1,71 @@
+@model WorkWebApp.Pages.Shared.InfoShiftModel
+@{
+    ViewData["Title"] = "InfoShift";
+}
+
+<div>
+    <h1>Shift Information</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            <th>Shift ID:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Shift.record_id)
+        </dd>
+        <dt class="col-sm-4">
+            <th>User ID:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Shift.userid)
+        </dd><dt class="col-sm-4">
+            <th>Start time:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Shift.start_time)
+        </dd><dt class="col-sm-4">
+            <th>End time:</th>
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Shift.end_time)
+        </dd>
+        <dt class="col-sm-4">
+                   <th>Break duration:</th>
+               </dt>
+               <dd class="col-sm-8">
+                   @Html.DisplayFor(model => model.Shift.break_duration)
+               </dd>
+               <dt class="col-sm-4">
+                   <th>Date:</th>
+               </dt>
+               <dd class="col-sm-8">
+               @Html.DisplayFor(model => model.Shift.dateofshift.Day)/@Html.DisplayFor(model => model.Shift.dateofshift.Month)/@Html.DisplayFor(model => model.Shift.dateofshift.Year)
+
+    </dl>
+    <hr />
+    
+    <dt class="col-sm-4">
+        <th>Request shift swap with:</th>
+    </dt>
+    <dd class="col-sm-8">
+        <form asp-action="SwapRequest" asp-controller="Shift" method="post">
+            <input type="hidden" asp-for="Shift.userid" name="userid" />
+            <input type="hidden" asp-for="Shift.record_id" name="record_id" />
+            <select asp-for="SelectedUser" asp-items="@(new SelectList(Model.Users, "record_id", "mail"))">
+                <option>Please select one</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Request Shift Swap</button>
+        </form>
+    </dd>
+    
+    
+    <div>
+        <p style="margin-right:15px;">
+            <a href="@Url.Content("./edit?id=" + Model.Shift.record_id)"><button class="btn btn-warning btn-lg btn-block">Edit</button></a>
+            <a href="@Url.Content("./delete?id=" + Model.Shift.record_id)"><button class="btn btn-danger btn-lg btn-block">Delete</button></a>
+
+            @* <a class="btn btn-dark btn-lg btn-block" asp-action="Employees">Back</a>
+            *@
+        </p>
+    </div>
+</div>

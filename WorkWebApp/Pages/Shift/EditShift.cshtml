@@ -1,0 +1,55 @@
+@page "/Shift/InfoShift/edit"
+
+@using WorkWebApp.data
+@using WorkWebApp.ViewModels
+@model WorkWebApp.Pages.Shift.EditShift
+
+@{
+    ViewData["Title"] = "Update Shift";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<!DOCTYPE html>
+    
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+        <title>Index</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST">
+                <legend>Update shift for user @Model.ShiftViewModel.userid </legend>
+                <div class="mb-3">
+                    <label for="startTime" class="form-label">Start time</label>
+                    <input asp-for="ShiftViewModel.start_time" type="time" class="form-control" id="startTime"/>
+                </div>
+                <div class="mb-3">
+                    <label for="endTime" class="form-label">End time</label>
+                    <input asp-for="ShiftViewModel.end_time" type="time" class="form-control"
+                           id="endTime"/>
+                </div>
+                <div class="mb-3">
+                    <label for="break" class="form-label">Break duration</label>
+                    <input asp-for="ShiftViewModel.break_duration" type="time" class="form-control"
+                           id="break"/>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input asp-for="ShiftViewModel.dateofshift" type="date" class="form-control" id="date"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+ 
+    </div>
+ 
+</div>
+
+</body>
+</html>
