@@ -25,10 +25,7 @@ public class ClockInModel : PageModel
     public async Task<IActionResult> OnPostClockInTime()
     {
         var clockIn = DateTime.Now.ToString("hh:mm:ss");
-        /*var clockInDate = DateTime.Now.ToString("F");
-        ViewData["Message"] = "Welcome back, you have now clocked in!" +
-                              "Info: "+clockInDate+". ";*/
-        
+
         if (ShiftViewModel != null)
         {
             var shift = new _shift()
@@ -42,16 +39,13 @@ public class ClockInModel : PageModel
 
             Console.WriteLine("Clocked In Registered: "+shift.checked_in_time+".");
         }
-
         return Redirect("/ClockIn");
     }
  
     public async Task<IActionResult> OnPostClockOutTime()
     {
         var clockOut = DateTime.Now.ToString("hh:mm:ss");
-        /*var clockOutDate = DateTime.Now.ToString("F");
-        ViewData["Message"] = "See you again, you have now clocked out!" +
-                              "Info: "+clockOutDate+". ";*/
+        var clockOutDate = DateTime.Now.ToString("F");
 
         if (ShiftViewModel != null)
         {
