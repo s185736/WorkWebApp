@@ -54,6 +54,10 @@ namespace WorkWebApp.Controllers
 
             return RedirectToAction(nameof(Employees));
         }
+        public async Task<IActionResult> ChangePassword()
+        {
+            return Redirect("/change-password");
+        }
         
         public async Task<IActionResult> EditUser(int? record_id)
         {

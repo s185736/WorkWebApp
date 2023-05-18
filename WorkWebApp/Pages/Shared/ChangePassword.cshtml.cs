@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using WorkWebApp.data;
 
-namespace WorkWebApp.Pages
+namespace WorkWebApp.Pages.Shared
 {
     public class ChangePassword : PageModel
     {
@@ -43,6 +43,10 @@ namespace WorkWebApp.Pages
             }
 
             return Page();
+        }
+        public async Task<IActionResult> Cancel()
+        {
+            return Redirect("/c");
         }
 
         public void OnGet()
