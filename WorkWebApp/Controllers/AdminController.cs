@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkWebApp.data;
+using WorkWebApp.ViewModels;
 
 namespace WorkWebApp.Controllers
 {
@@ -8,6 +9,7 @@ namespace WorkWebApp.Controllers
     {
         private readonly UserDataContext _context;
 
+        public ShiftViewModel? ShiftViewModel { get; set; }
         public AdminController(UserDataContext context)
         {
             _context = context;
@@ -36,6 +38,17 @@ namespace WorkWebApp.Controllers
         public async Task<IActionResult> DeleteUser(int record_id)
         {
             var user = await _context._user.FindAsync(record_id).ConfigureAwait(false);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var shifts = await _context._shift.Where(s => s.userid == record_id).ToListAsync().ConfigureAwait(false);
+            if (shifts != null && shifts.Any())
+            {
+                _context._shift.RemoveRange(shifts);
+            }
+    
             _context._user.Remove(user);
             await _context.SaveChangesAsync();
 
@@ -52,54 +65,47 @@ namespace WorkWebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser(int record_id, [Bind("record_id,firstname,lastname,mail,phonenumber,birthday,role,department")]
-        _user userData)
+            _user userData)
         {
-            bool doUserExist = false;
-
-            _user? user = await _context._user.FindAsync(record_id);
-
-            switch (user)
+            var updateUser = await _context._user.FindAsync(record_id);
+            if (updateUser == null)
             {
-                case null:
-                    user = new Employee();
-                    break;
-                default:
-                    doUserExist = true;
-                    break;
+                return NotFound();
             }
-
-            if (!ModelState.IsValid) return View(userData);
-            user.firstname = userData.firstname;
-            user.lastname = userData.lastname;
-            user.mail = userData.mail;
-            user.phonenumber = userData.phonenumber;
-            user.birthday = userData.birthday;
-            user.role = userData.role;
-            user.department = userData.department;
-
-            switch (doUserExist)
+        
+            // updating shift
+            var updateShift = await _context._shift.Where(s => s.userid == updateUser.record_id).ToListAsync();
+            if (updateShift.Any())
             {
-                case false:
-                    _context.Add(user);
-                    break;
-                default:
-                    _context.Update(user);
-                    break;
+                foreach (var shift in updateShift)
+                {
+                    shift.userid = shift.userid;
+                    shift.start_time = shift.start_time;
+                    shift.end_time = shift.end_time;
+                    shift.checked_in_time = shift.checked_in_time;
+                    shift.checked_out_time = shift.checked_out_time;
+                    shift.break_duration = shift.break_duration;
+                    shift.dateofshift = shift.dateofshift;
+                }
+                _context._shift.UpdateRange(updateShift);
             }
-
-            if (await TryUpdateModelAsync(
-                    user,
-                    "USER", 
-                    c => c.record_id, c => c.firstname, c => c.lastname,
-                    c => c.mail, c => c.phonenumber, c => c.birthday,
-                    c => c.role, c => c.department
-                ))
-            {
-                await _context.SaveChangesAsync();
-                return Redirect("/Admin/Employees");
-            }
+        
+            //Updating user
+            updateUser.firstname = userData.firstname;
+            updateUser.lastname = userData.lastname;
+            updateUser.mail = userData.mail;
+            updateUser.phonenumber = userData.phonenumber;
+            updateUser.birthday = userData.birthday;
+            updateUser.role = userData.role;
+            updateUser.department = userData.department;
+            _context._user.Update(updateUser);
+        
+            await _context.SaveChangesAsync();
+        
             return RedirectToAction(nameof(Employees));
         }
+
+
 
         public async Task<IActionResult> InfoUser(int? record_id)
         {

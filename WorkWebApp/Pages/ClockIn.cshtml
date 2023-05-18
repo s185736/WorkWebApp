@@ -1,12 +1,9 @@
 ﻿@page
-@using WorkWebApp.data
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model ClockInModel
 
 @{ 
     ViewData["Title"] = "Clock In";
-    var daysOfWeek = new[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    var currentDate = DateTime.Today;
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -70,6 +67,7 @@
         <li>You must sign out as soon as the department is closed, and not after you have changed clothes and or other things.</li>
         <li>If you have forgotten to clock in when you came to work, you must notify the department manager as soon as possible.</li>
     </ol>
+    <p>You've to enter your Employee Number in order to be registered.</p>
     <body>
     <main>
         <section id="product-overview">
@@ -78,13 +76,13 @@
                     
                     <div class="mb-3">
                         <label for="txtName" class="form-label">userID</label>
-                        <input asp-for="ShiftViewModel.userid" type="number" class="form-control" id="txtName"/>
+                        <input asp-for="ShiftViewModel!.userid" type="number" class="form-control" id="txtName"/>
                     </div>
                     
                     <tr>
-                        <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-for="ShiftViewModel.checked_in_time" asp-page-handler="ClockInTime"/></td>
+                        <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-for="ShiftViewModel!.checked_in_time" asp-page-handler="ClockInTime"/></td>
                         <div> </div>
-                        <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-for="ShiftViewModel.checked_out_time" asp-page-handler="ClockOutTime"/></td>
+                        <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-for="ShiftViewModel!.checked_out_time" asp-page-handler="ClockOutTime"/></td>
                     </tr>
                 </table>
             </form>

@@ -28,11 +28,13 @@
             height: 400px;
             overflow: auto;
         }
+        .zero-time {
+            visibility: hidden;
+        }
     </style>
 </head>
 
-    
-    <p>Your clocked in and out times will be recorded below, if something does not match then contact your immediate manager as soon as possible.</p>
+<p>Your clocked in and out times will be recorded below, if something does not match then contact your immediate manager as soon as possible.</p>
     
    <h2>Clock In Times</h2>
     <div class="ex3s">
@@ -46,18 +48,21 @@
                 </thead>
                 <tbody>
                 @foreach (var item in Model.AllShifts)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.userid)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.checked_in_time)
-                        </td>
-                       
-                        <td>
-                    </tr>
-                }
+                       {
+                           @if (item.checked_in_time != TimeSpan.Zero)
+                           {
+                               <tr>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.userid)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.checked_in_time)
+                                   </td>
+                                   <td>
+                                   </td>
+                               </tr>
+                           }
+                       }
                 </tbody>
             </table>
         </div>
@@ -74,18 +79,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach (var item in Model.AllShifts)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.userid)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.checked_out_time)
-                            </td>
-                            <td>
-                        </tr>
-                    }
+                   @foreach (var item in Model.AllShifts)
+                   {
+                       @if (item.checked_out_time != TimeSpan.Zero)
+                       {
+                           <tr>
+                               <td>
+                                   @Html.DisplayFor(modelItem => item.userid)
+                               </td>
+                               <td>
+                                   @Html.DisplayFor(modelItem => item.checked_out_time)
+                               </td>
+                               <td>
+                               </td>
+                           </tr>
+                       }
+                   }
                     </tbody>
                 </table>
             </div>

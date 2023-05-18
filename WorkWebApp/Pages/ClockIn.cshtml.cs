@@ -15,7 +15,7 @@ public class ClockInModel : PageModel
     }
 
     [BindProperty]
-    public ShiftViewModel ShiftViewModel { get; set; }
+    public ShiftViewModel? ShiftViewModel { get; set; }
 
     public IActionResult OnGet()
     {
@@ -24,41 +24,45 @@ public class ClockInModel : PageModel
     
     public async Task<IActionResult> OnPostClockInTime()
     {
-        TimeSpan clockIn = DateTime.Now.TimeOfDay;
-        
-        var shift = new _shift()
+        var clockIn = DateTime.Now.ToString("hh:mm:ss");
+
+        if (ShiftViewModel != null)
         {
-            checked_out_time = clockIn
-        };
+            var shift = new _shift()
+            {
+                userid = ShiftViewModel.userid,
+                checked_in_time = TimeSpan.Parse(clockIn)
+            };
+            ViewData["Message"] = "Clocked In Registered: "+shift.checked_in_time+".";
+            _context._shift.Add(shift);
+            await _context.SaveChangesAsync();
 
-        var entry = _context.Add(new _shift()); 
-        //_context._shift.Add(shift);
-        entry.CurrentValues.SetValues(ShiftViewModel);
-        await _context.SaveChangesAsync();
-
-        Console.WriteLine("Saved.");
-        Console.WriteLine("Clocked In Registered: "+clockIn+".");
-        
+            Console.WriteLine("Clocked In Registered: "+shift.checked_in_time+".");
+        }
         return Redirect("/ClockIn");
     }
  
     public async Task<IActionResult> OnPostClockOutTime()
     {
-        TimeSpan clockOut = DateTime.Now.TimeOfDay;
-        
-        var shift = new _shift()
+        var clockOut = DateTime.Now.ToString("hh:mm:ss");
+        var clockOutDate = DateTime.Now.ToString("F");
+        ViewData["Message"] = "Welcome back, you have now clocked out! " +
+                              "Date: "+clockOutDate+". " +
+                              "Time Clocked in at: "+clockOut+".";
+
+        if (ShiftViewModel != null)
         {
-            checked_out_time = clockOut
-        };
+            var shift = new _shift()
+            {
+                userid = ShiftViewModel.userid,
+                checked_out_time = TimeSpan.Parse(clockOut)
+            };
+            _context._shift.Add(shift);
+            await _context.SaveChangesAsync();
 
-        var entry = _context.Add(new _shift());
-        entry.CurrentValues.SetValues(ShiftViewModel);
-        //_context._shift.Add(shift);
-        await _context.SaveChangesAsync();
+            Console.WriteLine("Clocked Out Registered: "+shift.checked_out_time+".");
+        }
 
-        Console.WriteLine("Saved.");
-        Console.WriteLine("Clocked Out Registered: "+clockOut+".");
-        
         return Redirect("/ClockIn");
     }
 }
