@@ -46,6 +46,9 @@ public class ClockInModel : PageModel
     {
         var clockOut = DateTime.Now.ToString("hh:mm:ss");
         var clockOutDate = DateTime.Now.ToString("F");
+        ViewData["Message"] = "Welcome back, you have now clocked out! " +
+                              "Date: "+clockOutDate+". " +
+                              "Time Clocked in at: "+clockOut+".";
 
         if (ShiftViewModel != null)
         {

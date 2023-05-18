@@ -76,13 +76,13 @@
                     
                     <div class="mb-3">
                         <label for="txtName" class="form-label">userID</label>
-                        <input asp-for="ShiftViewModel.userid" type="number" class="form-control" id="txtName"/>
+                        <input asp-for="ShiftViewModel!.userid" type="number" class="form-control" id="txtName"/>
                     </div>
                     
                     <tr>
-                        <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-for="ShiftViewModel.checked_in_time" asp-page-handler="ClockInTime"/></td>
+                        <td><input type="submit" id="clock-in-button" class="btn btn-success" value="Clock In" asp-for="ShiftViewModel!.checked_in_time" asp-page-handler="ClockInTime"/></td>
                         <div> </div>
-                        <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-for="ShiftViewModel.checked_out_time" asp-page-handler="ClockOutTime"/></td>
+                        <td><input type="submit" id="clock-out-button" class="btn btn-danger" value="Clock Out" asp-for="ShiftViewModel!.checked_out_time" asp-page-handler="ClockOutTime"/></td>
                     </tr>
                 </table>
             </form>
