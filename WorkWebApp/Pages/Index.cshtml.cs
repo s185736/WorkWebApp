@@ -19,7 +19,7 @@ public class IndexModel : PageModel
     }
 
     public IList<_shiftswaprequest> SwapRequests { get; set; }
-
+    
     public async Task<IActionResult> OnGetAsync()
     {
         SwapRequests = await _context._shiftswaprequest

@@ -7,47 +7,48 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome @User.Identity.Name</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    @if (Model.SwapRequests != null && Model.SwapRequests.Any())
+    {
+        <h2>Swap Requests</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Requesting User</th>
+                <th>Shift ID</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var request in Model.SwapRequests)
+            {
+                <tr>
+                    <td>@request.record_id</td>
+                    <td>@request.requestinguserid</td>
+                    <td>@request.shiftid</td>
+                    <td>
+                                <form asp-page-handler="AcceptRequest" asp-route-requestId="@request.record_id">
+                                    <button type="submit" class="btn btn-success">Accepter</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-page-handler="RejectRequest" asp-route-requestId="@request.record_id">
+                                    <button type="submit" class="btn btn-danger">Afvis</button>
+                                </form>
+                            </td>
+                    <!-- Render more table cells with request details as needed -->
+                </tr>
+            }
+            </tbody>
+        </table>
+        
+    }
+    else
+    {
+        <p>No swap requests found.</p>
+    }
+
     <a asp-page="/Login" class="logout-btn">Log ud</a>
 </div>
 
-@if (Model.SwapRequests != null && Model.SwapRequests.Any())
-{
-    <h2>Swap Requests</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>Request ID</th>
-            <th>Requesting User</th>
-            <th>Shift ID</th>
-            <!-- Add more table headers as needed -->
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var request in Model.SwapRequests)
-        {
-            <tr>
-                <td>@request.record_id</td>
-                <td>@request.requestinguserid</td>
-                <td>@request.shiftid</td>
-                <td>
-                            <form asp-page-handler="AcceptRequest" asp-route-requestId="@request.record_id">
-                                <button type="submit" class="btn btn-success">Accepter</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form asp-page-handler="RejectRequest" asp-route-requestId="@request.record_id">
-                                <button type="submit" class="btn btn-danger">Afvis</button>
-                            </form>
-                        </td>
-                <!-- Render more table cells with request details as needed -->
-            </tr>
-        }
-        </tbody>
-    </table>
-    
-}
-else
-{
-    <p>No swap requests found.</p>
-}
